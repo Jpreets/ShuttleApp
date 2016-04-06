@@ -1,5 +1,6 @@
 <html>
 <body>
-<h2>Mindfire Shuttle :::::</h2>
+
+    <h1><center>::::: Mindfire Shuttle :::::</center></h1>
 </body>
 </html>
