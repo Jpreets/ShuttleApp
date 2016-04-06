@@ -9,4 +9,7 @@ import org.springframework.context.annotation.Import;
 @Import({ MongoConfig.class })
 public class AppConfig {
 
+    public static void main(String ... args){
+        System.out.println("Hello Sumit");
+    }
 }
