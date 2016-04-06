@@ -12,7 +12,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] { "/service/" };
+		return new String[] { "/service/*" };
 	}
 
 	@Override
