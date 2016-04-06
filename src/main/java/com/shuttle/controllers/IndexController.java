@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shuttle.bean.UserBean;
 import com.shuttle.service.UserService;
 
-@RestController
+@Controller
 public class IndexController {
 
 	@Autowired
