@@ -1,5 +1,5 @@
 <html>
-<body style="background: blue">
+<body style="background: cyan">
 
     <h1><center>::::: Mindfire Shuttle :::::</center></h1>
 
