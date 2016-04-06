@@ -9,7 +9,24 @@
 
     </head>
     <body>
-        <div>Shuttle</div>
+		<form ng-submit="authenticate()" name="loginForm">
+        <md-input-container>
+            <label>Username</label>
+            <input name="username" ng-model="loginInfo.username" required/>
+            <div ng-messages="loginForm.username.$error" ng-if='loginForm.username.$dirty'>
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Password</label>
+            <input name="password" type="password" ng-model="loginInfo.password" required/>
+            <div ng-messages="loginForm.password.$error" ng-if='loginForm.password.$dirty'>
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+        <md-button type="submit" class="md-primary btn btn-primary">Login</md-button>
+ </form>
           <!-- Angular Material requires Angular.js Libraries -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
