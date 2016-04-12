@@ -22,6 +22,8 @@ package com.shuttle.conf;
  * @author Baldeep Singh Kwatra
  */
 import com.shuttle.bean.UserBean;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -30,11 +32,14 @@ import org.springframework.security.authentication.InternalAuthenticationService
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component("authenticationProvider")
 public class MongoDBAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
     @Autowired
@@ -46,23 +51,34 @@ public class MongoDBAuthenticationProvider extends AbstractUserDetailsAuthentica
 
     @Override
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-        UserDetails loadedUser;
 
         try {
-            Query searchUserQuery = new Query(Criteria.where("username").is("bsk"));
+            String password = (String) authentication.getCredentials();
+
+            Query searchUserQuery = new Query();
+            searchUserQuery.addCriteria(Criteria.where("userEmail").is(username));
+            searchUserQuery.addCriteria(Criteria.where("userPassword").is(password));
 
             // find the saved user again.
             UserBean user = mongoOperation.findOne(searchUserQuery, UserBean.class);
 
-            loadedUser = new User(user.getUserName(), user.getUserPassword(), user.getUserRole());
+            if (user != null) {
+                final List<GrantedAuthority> auths;
+                if (!user.getUserRole().isEmpty()) {
+                    auths = AuthorityUtils.commaSeparatedStringToAuthorityList(user.getUserRole());
+                } else {
+                    auths = AuthorityUtils.NO_AUTHORITIES;
+                }
+                System.out.println("-----------------"+user.getUserRole());
+                System.out.println("-----------------"+auths);
+                return new User(user.getUserEmail(), user.getUserPassword(), auths);
+            }
+
         } catch (Exception repositoryProblem) {
             throw new InternalAuthenticationServiceException(repositoryProblem.getMessage(), repositoryProblem);
         }
 
-        if (loadedUser == null) {
-            throw new InternalAuthenticationServiceException(
-                    "UserDetailsService returned null, which is an interface contract violation");
-        }
-        return loadedUser;
+        throw new InternalAuthenticationServiceException(
+                "UserDetailsService returned null, which is an interface contract violation");
     }
 }

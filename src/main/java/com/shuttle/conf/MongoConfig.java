@@ -14,8 +14,8 @@ import org.springframework.data.mongodb.core.MongoOperations;
 
 @Configuration
 public class MongoConfig {
-@Autowired
-MongoOperations mongoOperation;
+//@Autowired
+//MongoOperations mongoOperation;
 
 	public @Bean
 	MongoDbFactory mongoDbFactory() throws Exception {
@@ -38,9 +38,9 @@ MongoOperations mongoOperation;
 
 	}
 
-        @Bean
-    public DBCollection users() {
-        return mongoOperation.getCollection("users");
-    }
+//        @Bean
+//    public DBCollection users() {
+//        return mongoOperation.getCollection("users");
+//    }
 
 }

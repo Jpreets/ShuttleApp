@@ -13,8 +13,12 @@ public class UserBean {
     private String userPassword;
     private String userContact;
     private String userGender;
-    private String userRole;
+    private String userRole="admin";
 
+    public UserBean() {
+    }
+
+    
     public UserBean(String userId, String userEmail, String userPassword) {
         this.userId = userId;
         this.userEmail = userEmail;

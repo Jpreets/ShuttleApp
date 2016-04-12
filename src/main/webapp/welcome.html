@@ -57,31 +57,31 @@
                 <div class="col-lg-4" style="margin-top: 30px;" id="registerDiv">
                     <div class="panel panel-primary">
                         <div class="panel-body">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" action="service/registration"  method="POST">
                                 <fieldset>
                                     <center><h3>Register for Shuttle</h3></center>
                                     <div class="form-group">
                                         <label for="inputName" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">account_circle</i></label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                            <input type="text" class="form-control" id="inputName" placeholder="Name" name="userName">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">email</i></label>
                                         <div class="col-lg-9">
-                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="userEmail">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputMobile" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">contact_phone</i></label>
                                         <div class="col-lg-9">
-                                            <input type="number" class="form-control" id="inputNumber" placeholder="Mobile Number">
+                                            <input type="number" class="form-control" id="inputNumber" placeholder="Mobile Number" name="userContact">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputPassword" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">lock_outline</i></label>
                                         <div class="col-lg-9">
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                            <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="userPassword">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -129,17 +129,17 @@
                         <h4 class="modal-title" style="text-align: center">Shuttle Login</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="login_check"  method="POST">
                             <div class="form-group">
                                 <label for="inputEmail" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">email</i></label>
                                 <div class="col-lg-9">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                    <input type="email" name="userEmail" class="form-control" id="inputEmail" placeholder="Email">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">lock_outline</i></label>
                                 <div class="col-lg-9">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                    <input type="password"  name="userPassword" class="form-control" id="inputPassword" placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-group">

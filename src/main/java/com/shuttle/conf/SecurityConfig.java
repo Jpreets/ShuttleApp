@@ -23,42 +23,60 @@ package com.shuttle.conf;
  */
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 import org.springframework.security.config.annotation.authentication.builders.*;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 
 @Configuration
 @EnableWebSecurity
+@ComponentScan({"com.shuttle"})
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private DataSource dataSource;
+//    @Autowired
+//    private DataSource dataSource;
+//
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .jdbcAuthentication()
+//                .dataSource(dataSource)
+//                .withDefaultSchema()
+//                .withUser("user").password("password").roles("USER");
+//    }
 
+    @Autowired
+    private MongoDBAuthenticationProvider authenticationProvider;
+      
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .jdbcAuthentication()
-                .dataSource(dataSource)
-                .withDefaultSchema()
-                .withUser("user").password("password").roles("USER");
+        auth.authenticationProvider(authenticationProvider);
     }
-
     @Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 	  http.authorizeRequests()
-		.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/service/admin/**").access("hasRole('admin')")
 		.and()
-		  .formLogin().loginPage("/login").failureUrl("/login?error")
-		  .usernameParameter("username").passwordParameter("password")
+                  .formLogin().loginProcessingUrl("/login_check")
+                  .defaultSuccessUrl("/service/default").
+                  loginPage("/login")
+                  .failureUrl("/login?error")
+		  .usernameParameter("userEmail").passwordParameter("userPassword")
 		.and()
 		  .logout().logoutSuccessUrl("/login?logout")
-		.and()
-		  .exceptionHandling().accessDeniedPage("/403")
-		.and()
-		  .csrf();
+//		.and()
+//		  .exceptionHandling().accessDeniedPage("/403")
+//		.and()
+//		  .csrf()
+                  ;
+              http.csrf().disable();
+
 	}
 
 }
