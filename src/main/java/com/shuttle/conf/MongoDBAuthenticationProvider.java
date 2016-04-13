@@ -69,8 +69,6 @@ public class MongoDBAuthenticationProvider extends AbstractUserDetailsAuthentica
                 } else {
                     auths = AuthorityUtils.NO_AUTHORITIES;
                 }
-                System.out.println("-----------------"+user.getUserRole());
-                System.out.println("-----------------"+auths);
                 return new User(user.getUserEmail(), user.getUserPassword(), auths);
             }
 

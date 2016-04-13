@@ -44,7 +44,7 @@ public class IndexController {
     
        @RequestMapping("/default")
     public String defaultAfterLogin(HttpServletRequest request) {
-        if (request.isUserInRole("admin")) {
+        if (request.isUserInRole("ADMIN")) {
             return "redirect:/service/admin/index";
         }
         return "redirect:/service/driver/index";

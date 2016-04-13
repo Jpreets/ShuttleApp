@@ -23,6 +23,7 @@ package com.shuttle.conf;
  */
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -36,6 +37,7 @@ import org.springframework.security.config.annotation.web.configuration.*;
 @EnableWebSecurity
 @ComponentScan({"com.shuttle"})
 @EnableGlobalMethodSecurity(securedEnabled = true)
+//@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //    @Autowired
@@ -49,34 +51,40 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .withDefaultSchema()
 //                .withUser("user").password("password").roles("USER");
 //    }
-
     @Autowired
     private MongoDBAuthenticationProvider authenticationProvider;
-      
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider);
     }
+//    @Autowired
+//    MongoUserDetailsService mongoUserDetailsService;
+//
+//    @Autowired
+//    public void configAuthBuilder(AuthenticationManagerBuilder builder) throws Exception {
+//        builder.userDetailsService(mongoUserDetailsService);
+//    }
+
     @Override
-	protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception {
 
-	  http.authorizeRequests()
-		.antMatchers("/service/admin/**").access("hasRole('admin')")
-		.and()
-                  .formLogin().loginProcessingUrl("/login_check")
-                  .defaultSuccessUrl("/service/default").
-                  loginPage("/login")
-                  .failureUrl("/login?error")
-		  .usernameParameter("userEmail").passwordParameter("userPassword")
-		.and()
-		  .logout().logoutSuccessUrl("/login?logout")
-//		.and()
-//		  .exceptionHandling().accessDeniedPage("/403")
-//		.and()
-//		  .csrf()
-                  ;
-              http.csrf().disable();
+        http.authorizeRequests()
+                .antMatchers("/service/admin/**").access("hasRole('ADMIN')");
+        http.authorizeRequests()
+                .antMatchers("/service/driver/**").access("hasRole('DRIVER')");
 
-	}
+        http.formLogin().loginProcessingUrl("/login_check")
+                .defaultSuccessUrl("/service/default")
+                .loginPage("/login")
+                .failureUrl("/login?error")
+                .usernameParameter("userEmail").passwordParameter("userPassword");
+                
+        http.logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout") ;
+                
+        http.exceptionHandling().accessDeniedPage("/service/invalidAccess");
+                
+        http.csrf().disable();
+
+    }
 
 }
