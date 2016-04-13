@@ -8,39 +8,49 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import com.mongodb.WriteConcern;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 
 @Configuration
 public class MongoConfig {
 //@Autowired
 //MongoOperations mongoOperation;
 
-	public @Bean
-	MongoDbFactory mongoDbFactory() throws Exception {
+    public @Bean
+    MongoDbFactory mongoDbFactory() throws Exception {
 
-		MongoClient mongo = new MongoClient("127.0.0.1");
-		SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongo, "shuttle");
-		return simpleMongoDbFactory;
+        MongoCredential credential = MongoCredential.createScramSha1Credential("root", "shuttle", "mindfire".toCharArray());
+        ServerAddress serverAddress = new ServerAddress("127.0.0.1");
 
-	}
+        MongoClient mongo = new MongoClient(serverAddress, Arrays.asList(credential));
 
-	public @Bean
-	MongoTemplate mongoTemplate() throws Exception {
+        SimpleMongoDbFactory simpleMongoDbFactory
+                = new SimpleMongoDbFactory(mongo, "shuttle"//,
+                );
 
-		MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
+        return simpleMongoDbFactory;
 
-		// show error, should off on production to speed up performance
-		mongoTemplate.setWriteConcern(WriteConcern.SAFE);
+    }
 
-		return mongoTemplate;
+    public @Bean
+    MongoTemplate mongoTemplate() throws Exception {
 
-	}
+        MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
+
+        // show error, should off on production to speed up performance
+        mongoTemplate.setWriteConcern(WriteConcern.SAFE);
+
+        return mongoTemplate;
+
+    }
 
 //        @Bean
 //    public DBCollection users() {
 //        return mongoOperation.getCollection("users");
 //    }
-
 }
