@@ -13,7 +13,7 @@ public class UserBean {
     private String userPassword;
     private String userContact;
     private String userGender;
-    private String userRole="admin";
+    private String userRole="ROLE_ADMIN";
 
     public UserBean() {
     }

@@ -1,19 +1,18 @@
 /**
  * ***********************************************************************************
  *
- * Copyright (c)  2016, Mindfire Solutions and/or its affiliates. All rights reserved.
+ * Copyright (c) 2016, Mindfire Solutions and/or its affiliates. All rights
+ * reserved.
  * ___________________________________________________________________________________
  *
  *
- * NOTICE:  All information contained herein is, and remains
- * the property of Mindfire and its suppliers,if any.
- * The intellectual and technical concepts contained
- * herein are proprietary to Mindfire Solutions.
- * and its suppliers and may be covered by us and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from Mindfire Solutions.
+ * NOTICE: All information contained herein is, and remains the property of
+ * Mindfire and its suppliers,if any. The intellectual and technical concepts
+ * contained herein are proprietary to Mindfire Solutions. and its suppliers and
+ * may be covered by us and Foreign Patents, patents in process, and are
+ * protected by trade secret or copyright law. Dissemination of this information
+ * or reproduction of this material is strictly forbidden unless prior written
+ * permission is obtained from Mindfire Solutions.
  */
 package com.shuttle.conf;
 
@@ -22,7 +21,7 @@ package com.shuttle.conf;
  * @author Baldeep Singh Kwatra
  */
 import com.shuttle.bean.UserBean;
-import java.util.ArrayList;
+import com.shuttle.constants.ControllerConstants;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -36,8 +35,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component("authenticationProvider")
 public class MongoDBAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
@@ -57,6 +56,9 @@ public class MongoDBAuthenticationProvider extends AbstractUserDetailsAuthentica
 
             Query searchUserQuery = new Query();
             searchUserQuery.addCriteria(Criteria.where("userEmail").is(username));
+
+            password = BCrypt.hashpw(password, ControllerConstants.SALT);
+
             searchUserQuery.addCriteria(Criteria.where("userPassword").is(password));
 
             // find the saved user again.
