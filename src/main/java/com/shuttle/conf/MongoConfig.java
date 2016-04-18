@@ -13,22 +13,27 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
 @PropertySource("classpath:MongoConfig.properties")
+@EnableMongoRepositories(basePackages = "com.shuttle.dao")
 public class MongoConfig {
 
     @Value("${mongodb.user}")
     private String mongoUser;
+    
     @Value("${mongodb.password}")
     private String mongoPassword;
+    
     @Value("${mongodb.db}")
     private String mongoDb;
+    
     @Value("${mongodb.serverip}")
     private String mongoServerIP;
 
-    public @Bean
-    MongoDbFactory mongoDbFactory() throws Exception {
+    @Bean
+    public MongoDbFactory mongoDbFactory() throws Exception {
 
         MongoCredential credential = MongoCredential.
                 createScramSha1Credential(mongoUser, mongoDb, mongoPassword.toCharArray());
@@ -37,15 +42,14 @@ public class MongoConfig {
 
         MongoClient mongo = new MongoClient(serverAddress, Arrays.asList(credential));
 
-        SimpleMongoDbFactory simpleMongoDbFactory =
-                new SimpleMongoDbFactory(mongo, mongoDb);
+        SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongo, mongoDb);
 
         return simpleMongoDbFactory;
 
     }
 
-    public @Bean
-    MongoTemplate mongoTemplate() throws Exception {
+    @Bean
+    public MongoTemplate mongoTemplate() throws Exception {
 
         MongoTemplate mongoTemplate = new MongoTemplate(mongoDbFactory());
 
