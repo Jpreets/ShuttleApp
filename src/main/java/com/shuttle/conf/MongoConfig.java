@@ -1,10 +1,13 @@
 package com.shuttle.conf;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.WriteConcern;
 import java.util.Arrays;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +34,17 @@ public class MongoConfig {
     
     @Value("${mongodb.serverip}")
     private String mongoServerIP;
+  
+    
+    /**
+     * To Set Default Logging Level to WARN
+     */
+    public static final Logger root = (Logger) LoggerFactory
+            .getLogger(Logger.ROOT_LOGGER_NAME);
+
+    static {
+        root.setLevel(Level.WARN);
+    }
 
     @Bean
     public MongoDbFactory mongoDbFactory() throws Exception {
