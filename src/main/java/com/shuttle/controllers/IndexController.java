@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.shuttle.bean.UserBean;
 import com.shuttle.constants.ControllerConstants;
 import com.shuttle.dao.UserDAO;
+import com.shuttle.service.Notification;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,9 @@ public class IndexController {
         
         user.setUserPassword(BCrypt.hashpw(user.getUserPassword(), ControllerConstants.SALT));
         if(userDAO.save(user)!=null)
+        {   Notification.sendWelcomeMail(user);
             return "redirect:/index.html#/login";
+        }
         else
             return "redirect:/index.html";//error message to be sent
     }
