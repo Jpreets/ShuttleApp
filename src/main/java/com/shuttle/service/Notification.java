@@ -20,6 +20,6 @@ public class Notification {
                 + "Transform the way you travel. No more haggling with auto and still pay less! "
                 + "Your convenience is our priority.<br><br><b>Cheers,<br>Team Shuttle</b></h5>";
 	email.sendMail("mindfireprojects@gmail.com",user.getUserEmail(),"Welcome to Shuttle",body);
-        
+       
     }
 }
