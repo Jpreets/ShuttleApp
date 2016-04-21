@@ -6,25 +6,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shuttle.bean.UserBean;
 import com.shuttle.constants.ControllerConstants;
+import com.shuttle.service.Notification;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import com.shuttle.repository.UserRepository;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class IndexController {
 
     @Autowired
-    private UserRepository userDAO;
+    private UserRepository userRepository;
 
     @RequestMapping(value = "/registration",
             method = RequestMethod.POST)
-    public String index(String userName,String userEmail, String userPassword) {
-
-        userPassword = BCrypt.hashpw(userPassword, ControllerConstants.SALT);
-        this.userDAO.save(new UserBean( userName, userEmail, userPassword));
-
-        return "redirect:/index.html#/login";
+    public String index(@ModelAttribute("user") UserBean user) {
+        
+        user.setUserPassword(BCrypt.hashpw(user.getUserPassword(), ControllerConstants.SALT));
+        if(userRepository.save(user)!=null)
+        {   Notification.sendWelcomeMail(user);
+            return "redirect:/index.html#/login";
+        }
+        else
+            return "redirect:/index.html";//error message to be sent
     }
 
     @RequestMapping("/default")
@@ -34,6 +39,5 @@ public class IndexController {
         }
         return "redirect:/driver/index.html";
     }
-
 
 }

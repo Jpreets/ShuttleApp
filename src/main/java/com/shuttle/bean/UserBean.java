@@ -83,7 +83,8 @@ public class UserBean {
 
     @Override
     public String toString() {
-        return "Name:" + this.userName + "\nEmail:" + this.userEmail + "\nContact:" + this.userContact + "\n\n";
+        return "UserBean{" + "userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPassword=" + userPassword + ", userContact=" + userContact + ", userGender=" + userGender + ", userRole=" + userRole + '}';
     }
+
 
 }
