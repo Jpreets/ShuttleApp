@@ -6,16 +6,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shuttle.bean.UserBean;
 import com.shuttle.constants.ControllerConstants;
-import com.shuttle.dao.UserDAO;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
+import com.shuttle.repository.UserRepository;
 
 @Controller
 public class IndexController {
 
     @Autowired
-    private UserDAO userDAO;
+    private UserRepository userDAO;
 
     @RequestMapping(value = "/registration",
             method = RequestMethod.POST)
