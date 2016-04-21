@@ -20,22 +20,21 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @Configuration
 @PropertySource("classpath:MongoConfig.properties")
-@EnableMongoRepositories(basePackages = "com.shuttle.dao")
+@EnableMongoRepositories(basePackages = "com.shuttle.repository")
 public class MongoConfig {
 
     @Value("${mongodb.user}")
     private String mongoUser;
-    
+
     @Value("${mongodb.password}")
     private String mongoPassword;
-    
+
     @Value("${mongodb.db}")
     private String mongoDb;
-    
+
     @Value("${mongodb.serverip}")
     private String mongoServerIP;
-  
-    
+
     /**
      * To Set Default Logging Level to WARN
      */
@@ -49,12 +48,12 @@ public class MongoConfig {
     @Bean
     public MongoDbFactory mongoDbFactory() throws Exception {
 
-        MongoCredential credential = MongoCredential.
-                createScramSha1Credential(mongoUser, mongoDb, mongoPassword.toCharArray());
-
+//        MongoCredential credential = MongoCredential.
+//                createScramSha1Credential(mongoUser, mongoDb, mongoPassword.toCharArray());
         ServerAddress serverAddress = new ServerAddress(mongoServerIP);
 
-        MongoClient mongo = new MongoClient(serverAddress, Arrays.asList(credential));
+//        MongoClient mongo = new MongoClient(serverAddress, Arrays.asList(credential));
+        MongoClient mongo = new MongoClient(serverAddress);
 
         SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongo, mongoDb);
 
