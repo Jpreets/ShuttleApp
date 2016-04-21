@@ -19,17 +19,21 @@ public class IndexController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private Notification notification;
+
     @RequestMapping(value = "/registration",
             method = RequestMethod.POST)
     public String index(@ModelAttribute("user") UserBean user) {
-        
+
         user.setUserPassword(BCrypt.hashpw(user.getUserPassword(), ControllerConstants.SALT));
-        if(userRepository.save(user)!=null)
-        {   Notification.sendWelcomeMail(user);
-            return "redirect:/index.html#/login";
-        }
-        else
+
+        if (userRepository.save(user) != null) {
+            notification.sendWelcomeMail(user);
+            return "redirect:/index.html?login";
+        } else {
             return "redirect:/index.html";//error message to be sent
+        }
     }
 
     @RequestMapping("/default")

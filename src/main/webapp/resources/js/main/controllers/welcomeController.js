@@ -1,11 +1,20 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-
-shuttleApp.controller('welcomeController', function($scope) {
+shuttleApp.controller('welcomeController', function ($scope) {
+    $scope.$on('$viewContentLoaded', function () {
+        if (window.location.href.indexOf("login") > -1) {
+            $('#loginModal').modal('show');
+        } else if (window.location.href.indexOf("forgot") > -1)
+        {
+            $('#forgotPasswordModal').modal('show');
+        }
+    });
     $scope.pageClass = 'home';
-  
+
+    $scope.login = function () {
+        $('#loginModal').modal('show');
+    };
+    $scope.forgot = function () {
+        $('#forgotPasswordModal').modal('show');
+    };
+
 });

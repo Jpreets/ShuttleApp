@@ -13,14 +13,6 @@ shuttleApp.config(function ($routeProvider) {
                 templateUrl: 'welcome.html',
                 controller: 'welcomeController'
             })
-            .when('/login', {
-                templateUrl: 'common/login.html',
-                controller: 'welcomeController'
-            })
-            .when('/forgetpassword', {
-                templateUrl: 'common/forgetPassword.html',
-                controller: 'welcomeController'
-            })
             .when('/invalidAccess', {
                 templateUrl: 'invalidAccess.html',
                 controller: 'errorController'
@@ -28,6 +20,6 @@ shuttleApp.config(function ($routeProvider) {
             .otherwise({
                 redirectTo: '/invalidAccess'
             });
-    ;
-
 });
+
+ 

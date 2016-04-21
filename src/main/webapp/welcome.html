@@ -76,10 +76,11 @@
                             </div>
                         </fieldset>
                     </form>
-                    <center>Already Registered?<a id="loginLink" href="#login" ng-model="showDialog"  > Login</a></center>
-                    <center><a id="forgotPasswordLink" href="#forgetpassword"  >Forgot Password?</a></center>
+                    <center>Already Registered?<a id="loginLink" ng-click="login()"> Login</a></center>
+                    <center><a ng-click="forgot()" id="forgotPasswordLink">Forgot Password?</a></center>
                 </div>
             </div>
         </div> 
     </div>
 </div>
+
