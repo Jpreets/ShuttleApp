@@ -2,27 +2,29 @@ package com.shuttle.bean;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
 
 @Document(collection = "user")
 public class UserBean {
 
     @Id
     private String userId;
+    @Size(min=3, max=100,message = "Name must be atleast 3 characters in length and less than 100 characters")
     private String userName;
+    @Email
     private String userEmail;
+    @NotNull
+    @Size(min=8, max=100,message = "Password must be atleast 8 characters in length and less than 100 characters")
     private String userPassword;
+    @Digits(integer = 10, fraction = 0, message = "Phone number cannot be more than 10 digits")
     private String userContact;
     private String userGender;
     private String userRole="ROLE_ADMIN";
 
     public UserBean() {
-    }
-
-    
-    public UserBean(String userId, String userEmail, String userPassword) {
-        this.userId = userId;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
     }
 
     public String getUserName() {

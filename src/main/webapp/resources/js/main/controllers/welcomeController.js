@@ -6,6 +6,11 @@ shuttleApp.controller('welcomeController', function ($scope) {
         } else if (window.location.href.indexOf("forgot") > -1)
         {
             $('#forgotPasswordModal').modal('show');
+        } else if (window.location.href.indexOf("error") > -1)
+        {
+            $('#errorModal').modal('show');
+            $('<p>' + getURLParameter("errorMsg") + '</p>').appendTo('#errorBody');
+
         }
     });
     $scope.pageClass = 'home';
@@ -18,3 +23,6 @@ shuttleApp.controller('welcomeController', function ($scope) {
     };
 
 });
+function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
+}
