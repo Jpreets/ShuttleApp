@@ -11,6 +11,10 @@ shuttleApp.controller('welcomeController', function ($scope) {
             $('#errorModal').modal('show');
             $('<p>' + getURLParameter("errorMsg") + '</p>').appendTo('#errorBody');
 
+        } else if (window.location.href.indexOf("changePassword") > -1) {
+            $('#changePasswordModal').modal('show');
+            document.getElementById("email").value = getURLParameter("email");
+            document.getElementById("key").value = getURLParameter("id");
         }
     });
     $scope.pageClass = 'home';
@@ -21,8 +25,9 @@ shuttleApp.controller('welcomeController', function ($scope) {
     $scope.forgot = function () {
         $('#forgotPasswordModal').modal('show');
     };
-
 });
 function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
 }
+
+

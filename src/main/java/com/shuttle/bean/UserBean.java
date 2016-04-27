@@ -23,6 +23,9 @@ public class UserBean {
     private String userContact;
     private String userGender;
     private String userRole="ROLE_ADMIN";
+    private String userChangePassword="Not Changed";
+
+   
 
     public UserBean() {
     }
@@ -83,10 +86,20 @@ public class UserBean {
         this.userId = userId;
     }
 
+     public String getUserChangePassword() {
+        return userChangePassword;
+    }
+
+    public void setUserChangePassword(String userChangePassword) {
+        this.userChangePassword = userChangePassword;
+    }
+
     @Override
     public String toString() {
-        return "UserBean{" + "userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPassword=" + userPassword + ", userContact=" + userContact + ", userGender=" + userGender + ", userRole=" + userRole + '}';
+        return "UserBean{" + "userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPassword=" + userPassword + ", userContact=" + userContact + ", userGender=" + userGender + ", userRole=" + userRole + ", userChangePassword=" + userChangePassword + '}';
     }
+    
+    
 
 
 }

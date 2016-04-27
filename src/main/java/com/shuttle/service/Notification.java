@@ -26,4 +26,17 @@ public class Notification {
             e.printStackTrace();
         }
     }
+    
+    public void sendForgotPasswordEmail(UserBean user,String tempPassword) {
+
+        String body = "<center><h2>Mindfire Shuttle</h2></center><br><br><h4>Hi " + user.getUserName()
+                + ",<br><br><h4>"
+                + "We received a request to reset your password. If you made a request then click below to change else please ignore this email."
+                + "<br><center><a href=\"http://localhost:8080/ShuttleApp/index.html?changePassword?id="+tempPassword+"&email="+user.getUserEmail()+"\">Click Here to Change Password</a></center><br><br>Your convenience is our priority.<br><br><b>Cheers,<br>Team Shuttle</b></h4>";
+        try {
+            email.sendMail("mindfireprojects@gmail.com", user.getUserEmail(), "Shuttle Forgot Password", body);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
