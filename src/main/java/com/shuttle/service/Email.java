@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.shuttle.service;
 
 /**
@@ -32,6 +27,7 @@ public class Email {
             
             MimeMessage message = mailSender.createMimeMessage();
             message.setSubject(subject);
+            message.setHeader("Content-Type", "text/plain; charset=UTF-8");
             MimeMessageHelper helper;
             helper = new MimeMessageHelper(message, true);
             helper.setFrom(from);

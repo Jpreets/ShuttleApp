@@ -2,10 +2,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../resources/css/custom.min.css">
+        <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="../resources/js/main/app.js"></script>
+        <script src="../resources/js/bootstrap.min.js"></script>
+        <script src="../resources/js/main/controllers/welcomeController.js"></script>
+        <script src="../resources/js/main/controllers/errorController.js"></script>
     </head>
-    <body>
-        <h1>Hello Driver!</h1>
+     <body ng-app="mainApp">
+        <div ng-include="'header.html'"></div>
+        <div class="page {{ pageClass}}" ng-view></div>
     </body>
 </html>

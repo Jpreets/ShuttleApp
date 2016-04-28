@@ -12,20 +12,18 @@ public class UserBean {
 
     @Id
     private String userId;
-    @Size(min=3, max=100,message = "Name must be atleast 3 characters in length and less than 100 characters")
+    @Size(min = 3, max = 100, message = "Name must be atleast 3 characters in length and less than 100 characters")
     private String userName;
     @Email
     private String userEmail;
     @NotNull
-    @Size(min=8, max=100,message = "Password must be atleast 8 characters in length and less than 100 characters")
+    @Size(min = 8, max = 100, message = "Password must be atleast 8 characters in length and less than 100 characters")
     private String userPassword;
     @Digits(integer = 10, fraction = 0, message = "Phone number cannot be more than 10 digits")
     private String userContact;
     private String userGender;
-    private String userRole="ROLE_ADMIN";
-    private String userChangePassword="Not Changed";
-
-   
+    private String userRole = "ROLE_ADMIN";
+    private String userChangePassword = "Not Changed";
 
     public UserBean() {
     }
@@ -86,7 +84,7 @@ public class UserBean {
         this.userId = userId;
     }
 
-     public String getUserChangePassword() {
+    public String getUserChangePassword() {
         return userChangePassword;
     }
 
@@ -98,8 +96,4 @@ public class UserBean {
     public String toString() {
         return "UserBean{" + "userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPassword=" + userPassword + ", userContact=" + userContact + ", userGender=" + userGender + ", userRole=" + userRole + ", userChangePassword=" + userChangePassword + '}';
     }
-    
-    
-
-
 }

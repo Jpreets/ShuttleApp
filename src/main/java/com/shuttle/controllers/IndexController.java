@@ -79,6 +79,7 @@ public class IndexController {
             user.setUserChangePassword(temporaryPassword);
             userRepository.save(user);
             notification.sendForgotPasswordEmail(user, temporaryPassword);
+            return new ModelAndView("redirect:/index.html?errorMsg=No account exists with this Email ID.");
         }
         return new ModelAndView("redirect:/index.html?errorMsg=Please check your Email in order to reset your password");
     }
