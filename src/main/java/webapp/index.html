@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/css/custom.min.css">
+        <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="resources/js/main/app.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/main/controllers/welcomeController.js"></script>
+        <script src="resources/js/main/controllers/errorController.js"></script>
+    </head>
+
+    <body ng-app="mainApp">
+        <div ng-include="'common/header.html'"></div>
+        <div class="page {{ pageClass}}" ng-view></div>
+        <div ng-include="'common/footer.html'"></div>
+        <div ng-include="'common/forgetPassword.html'"></div>
+        <div ng-include="'common/login.html'"></div>
+        <div ng-include="'common/error.html'"></div>
+    </body>
+</html>

@@ -1,0 +1,85 @@
+<div style="width:100%" ng-init="getOwnerList()"> 
+    <button ng-click="hideDialog()" class="btn btn-default">Add Owner</button>
+    <formmodal title="Driver Form" visible="ownerHidden">
+        <form role="form" class="form-horizontal" id="ownerForm" ng-submit="insertOwner()">
+            <div class="form-group">
+                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
+                    </br>
+                    <i class="material-icons">account_circle</i>
+                    <input type="text" class="form-control" id="ownerName" name="inpName" placeholder="Name" ng-model="owner.ownerName" style="padding-left: 35px;font-size: small">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
+                    </br>
+                    <i class="material-icons">email</i>
+                    <input type="text" class="form-control" id="inpEmail" name="ownerEmail" placeholder="Email" ng-model="owner.ownerEmail" style="padding-left: 35px;font-size: small">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
+                    </br>
+                    <i class="material-icons">person_pin_circle</i>
+                    <textarea class="form-control" id="inpAddress" name="ownerAddress" placeholder="Address"  ng-model="owner.ownerAddress" style="padding-left: 35px;font-size: small"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
+                    </br>
+                    <i class="material-icons">person_pin_circle</i>
+                    <input type="text" class="form-control" id="inpCity" name="ownerCity" placeholder="City" ng-model="owner.ownerCity"  style="padding-left: 35px;font-size: small">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
+                    </br>
+                    <i class="material-icons">map</i>
+                    <input type="text" class="form-control" id="inpCountry" name="ownerCountry" placeholder="Country" ng-model="owner.ownerCountry"  style="padding-left: 35px;font-size: small">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon"></br>
+                    <i class="material-icons">place</i>
+                    <input type="text" class="form-control" id="inpState" name="ownerState" placeholder="State" ng-model="owner.ownerState"  style="padding-left: 35px;font-size: small">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon"></br>
+                    <i class="material-icons">local_phone</i>
+                    <input type="text" class="form-control" id="inpPhone" name="ownerPhone" placeholder="Phone" ng-model="owner.ownerPhone"  style="padding-left: 35px;font-size: small">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6 col-lg-offset-3 left-inner-addon"></br>
+                    <button type="submit" class="btn btn-primary form-control" id="btnSubmit" name="btnSubmit">Submit</button>
+                </div>
+            </div>
+        </form> </formmodal>
+    <div>          
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="person in myWelcome">
+                <tr ng-if="person.ownerName.length>0 && person.ownerState.length>0 ">
+                    <td>{{person.ownerName}}</td>
+                    <td>{{person.ownerEmail}}</td>
+                    <td>{{person.ownerPhone}}</td>
+                    <td>{{person.ownerAddress}}</td>
+                    <td>{{person.ownerCity}}</td>
+                    <td>{{person.ownerState}}</td>
+                    <td>{{person.ownerCountry}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
