@@ -48,12 +48,12 @@ public class MongoConfig {
     @Bean
     public MongoDbFactory mongoDbFactory() throws Exception {
 
-//        MongoCredential credential = MongoCredential.
-//                createScramSha1Credential(mongoUser, mongoDb, mongoPassword.toCharArray());
+        MongoCredential credential = MongoCredential.
+                createScramSha1Credential(mongoUser, mongoDb, mongoPassword.toCharArray());
         ServerAddress serverAddress = new ServerAddress(mongoServerIP);
 
-//        MongoClient mongo = new MongoClient(serverAddress, Arrays.asList(credential));
-        MongoClient mongo = new MongoClient(serverAddress);
+        MongoClient mongo = new MongoClient(serverAddress, Arrays.asList(credential));
+//        MongoClient mongo = new MongoClient(serverAddress);
 
         SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongo, mongoDb);
 
