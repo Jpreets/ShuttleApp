@@ -5,7 +5,8 @@
  */
 package com.shuttle.controllers;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shuttle.bean.OwnerBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +20,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import com.shuttle.repository.UserRepository;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.validation.Valid;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -39,22 +43,25 @@ public class AdminController {
     @RequestMapping(value = "/addOwner", method = RequestMethod.POST)
     @ResponseBody
     public String insertOwner(@RequestBody final String owner) {
-        Gson gson = new Gson();
-        OwnerBean s = gson.fromJson(owner, OwnerBean.class);
-        if (owner != null) {
-            ownerRepository.save(s);
-            return "success";
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+
+            OwnerBean s = mapper.readValue(owner, OwnerBean.class);
+            if (owner != null) {
+                
+                ownerRepository.save(s);
+                return "success";
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "failure";
     }
 
-    @RequestMapping(value = "/getOwnerList", method = RequestMethod.GET,produces ="application/json")
+    @RequestMapping(value = "/getOwnerList", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public String getOwnerList() {
-        List<OwnerBean> ownerList = new ArrayList<OwnerBean>();
-        Gson gson = new Gson();
-        String json = gson.toJson(ownerRepository.findAll());
-        System.out.println("Amit" + json);
-        return json;
+    public List<OwnerBean> getOwnerList() {
+
+        return ownerRepository.findAll();
     }
 }
