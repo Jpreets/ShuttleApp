@@ -1,11 +1,17 @@
+/**
+ * Created Date: 28 May 2016
+ * Last Modified Date: 28 May 2016
+ */
 package com.shuttle.bean;
 
 import javax.validation.constraints.NotNull;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "owner")
 public class OwnerBean {
 
+    @Id
     private String ownerId;
     @NotNull
     private String ownerName;
@@ -16,7 +22,7 @@ public class OwnerBean {
     private String ownerCity;
     private String ownerCountry;
     private String ownerState;
-    
+
     private String ownerRole = "ROLE_OWNER";
 
     public String getOwnerId() {
@@ -98,6 +104,4 @@ public class OwnerBean {
     public void setOwnerRole(String ownerRole) {
         this.ownerRole = ownerRole;
     }
-
- 
 }

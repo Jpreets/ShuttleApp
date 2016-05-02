@@ -1,11 +1,13 @@
+/**
+ * Created Date: 28 April 2016
+ * Last Modified Date: 28 April 2016
+ */
 package com.shuttle.service;
 
 /**
  *
  * @author baldeep
  */
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,16 @@ public class Email {
     @Autowired
     private JavaMailSender mailSender;
 
-
+    /**
+     * This method triggers the email in background thread 
+     * i.e. the mail is sent asynchronously
+     * 
+     * @param from Email from which mail is triggered
+     * @param to Email to whom mail has to be sent
+     * @param subject Subject of the email Messages
+     * @param msg Message body to be sent along with email
+     * @throws InterruptedException 
+     */
     @Async
     public void sendMail(String from, String to, String subject, String msg) throws InterruptedException {
         try {
@@ -34,9 +45,8 @@ public class Email {
             helper.setTo(to);
             helper.setText(msg, true);
             mailSender.send(message);
-            System.out.println("Inside mail");
         } catch (MessagingException ex) {
-            Logger.getLogger(Email.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 
