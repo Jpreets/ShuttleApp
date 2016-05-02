@@ -1,3 +1,7 @@
+/**
+ * Created Date: 28 April 2016
+ * Last Modified Date: 28 April 2016
+ */
 package com.shuttle.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.shuttle.constants.ShuttleConstants;
 
 @Controller
 public class AdminController {
@@ -21,13 +26,12 @@ public class AdminController {
     @Autowired
     private OwnerRepository ownerRepository;
 
-    @RequestMapping(value = "/addOwner", method = RequestMethod.POST)
+    @RequestMapping(value = ShuttleConstants.ADMIN_ADD_OWNER, method = RequestMethod.POST)
     @ResponseBody
     public String insertOwner(@RequestBody final String owner) {
         try {
-            ObjectMapper mapper = new ObjectMapper();
 
-            OwnerBean s = mapper.readValue(owner, OwnerBean.class);
+            OwnerBean s = new ObjectMapper().readValue(owner, OwnerBean.class);
             if (owner != null) {
                 
                 ownerRepository.save(s);
@@ -39,7 +43,7 @@ public class AdminController {
         return "failure";
     }
 
-    @RequestMapping(value = "/getOwnerList", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = ShuttleConstants.ADMIN_GET_OWNERS, method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public List<OwnerBean> getOwnerList() {
 

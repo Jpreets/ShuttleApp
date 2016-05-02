@@ -1,3 +1,7 @@
+/**
+ * Created Date: 18 April 2016
+ * Last Modified Date: 18 April 2016
+ */
 package com.shuttle.conf;
 
 import org.springframework.context.annotation.ComponentScan;
@@ -10,12 +14,4 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan({"com.shuttle"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-//    @Bean
-//    public ViewResolver getViewResolver() {
-//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//        resolver.setPrefix("/WEB-INF/jsp/");
-//        resolver.setSuffix(".jsp");
-//        return resolver;
-//    }
-    
 }

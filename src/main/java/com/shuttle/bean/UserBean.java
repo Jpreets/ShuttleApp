@@ -1,3 +1,7 @@
+/**
+ * Created Date: 4 April 2016
+ * Last Modified Date: 26 April 2016
+ */
 package com.shuttle.bean;
 
 import org.springframework.data.annotation.Id;

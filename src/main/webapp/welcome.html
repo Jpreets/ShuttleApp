@@ -1,78 +1,62 @@
 <div class="container-fluid" style="padding-top: 20px;padding-bottom: 20px">
     <div class="row" style="background-color: #2196f3;">
-        <div class="col-lg-7 hidden-xs">
+        <div class="col-lg-7 col-md-7 col-sm-7 hidden-xs">
             <img style="margin: 15% auto;display: table;" src="resources/images/car.png" alt="Shuttle">
         </div>
-        <div class="col-lg-4" style="margin-top: 30px;" id="registerDiv">
+        <div class="col-lg-4 col-md-4 col-sm-4" style="margin-top: 30px;" id="registerDiv">
             <div class="panel panel-primary">
                 <div class="panel-body">
                     <form name="registerForm" class="form-horizontal" action="service/registration"  method="POST" novalidate>
                         <fieldset>
-                            <center><h3>Register for Shuttle</h3></center>
-                            <div class="form-group">
-                                <label for="inputName" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">account_circle</i></label>
-                                <div class="col-lg-9">
-                                    <input type="text" ng-model="userName" class="form-control" id="inputName" placeholder="Name" name="userName" required>
+                            <center><h4>Register for Shuttle</h4></center>
+                            <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 left-inner-addon">
+                                <br><i class="material-icons">account_circle</i>
+                                    <input type="text" ng-model="userName" class="form-control element-space" id="inputName" placeholder="Name" name="userName" required>
                                     <p style="color:red" ng-show="registerForm.userName.$invalid && !registerForm.userName.$pristine">Name is required.</p>
-                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="inputEmail" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">email</i></label>
-                                <div class="col-lg-9">
-                                    <p>  <input type="email"  ng-model="userEmail" class="form-control" id="inputEmail" placeholder="Email" name="userEmail" required>
+                            <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 left-inner-addon">
+                                <br><i class="material-icons">email</i>
+                                    <p>  <input type="email"  ng-model="userEmail" class="form-control element-space" id="inputEmail" placeholder="Email" name="userEmail" required>
                                         <span style="color:red" ng-show="registerForm.userEmail.$dirty && registerForm.userEmail.$invalid">
                                             <span ng-show="registerForm.userEmail.$error.required">Email is required.</span>
                                             <span ng-show="registerForm.userEmail.$error.email">Invalid email address.</span>
                                         </span></p>
-                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="inputMobile" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">contact_phone</i></label>
-                                <div class="col-lg-9">
-                                    <input ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" ng-model="userContact" type="text" class="form-control" id="inputNumber" placeholder="Mobile Number" name="userContact" required>
-                                    <span style="color:red" ng-show="registerForm.userContact.$dirty && registerForm.userContact.$invalid">
-                                        <span ng-show="registerForm.userContact.$error.required">Mobile Number is required.</span>
-                                        <span ng-show="registerForm.userContact.$error.pattern">Please enter a valid mobile number</span>
-                                    </span>
-
-                                </div>
+                            <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 left-inner-addon">
+                                <br><i class="material-icons">contact_phone</i>
+                                <input ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" ng-model="userContact" type="text" class="form-control element-space" id="inputNumber" placeholder="Mobile Number" name="userContact" required>
+                                <span style="color:red" ng-show="registerForm.userContact.$dirty && registerForm.userContact.$invalid">
+                                    <span ng-show="registerForm.userContact.$error.required">Mobile Number is required.</span>
+                                    <span ng-show="registerForm.userContact.$error.pattern">Please enter a valid mobile number</span>
+                                </span>
                             </div>
-                            <div class="form-group">
-                                <label for="inputPassword" class="col-lg-2 col-sm-2 control-label"><i class="material-icons">lock_outline</i></label>
-                                <div class="col-lg-9">
-                                    <input type="password" class="form-control" ng-model="userPassword" id="inputPassword" placeholder="Password" name="userPassword" required>
-                                    <p style="color:red" ng-show="registerForm.userPassword.$invalid && !registerForm.userPassword.$pristine">Password is required.</p>
-                                </div>
+                            <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 left-inner-addon">
+                                <br><i class="material-icons">lock_outline</i>
+                                <input type="password" class="form-control element-space" ng-model="userPassword" id="inputPassword" placeholder="Password" name="userPassword" required>
+                                <p style="color:red" ng-show="registerForm.userPassword.$invalid && !registerForm.userPassword.$pristine">Password is required.</p>
                             </div>
-                            <div class="form-group">
-                                <label for="inputPassword" class="col-lg-2 control-label"><i class="material-icons">lock</i></label>
-                                <div class="col-lg-9">
-                                    <input type="password" ng-model="confirmPassword" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
-                                    <span style="color: red" ng-show="(userPassword !== confirmPassword) && registerForm.confirmPassword.$dirty">Password mismatch</span>
-                                </div>
+                            <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 left-inner-addon">
+                                <br><i class="material-icons">lock</i>
+                                <input type="password" ng-model="confirmPassword" name="confirmPassword" class="form-control element-space" id="confirmPassword" placeholder="Confirm Password" required>
+                                <span style="color: red" ng-show="(userPassword !== confirmPassword) && registerForm.confirmPassword.$dirty">Password mismatch</span>
                             </div>
-                            <div class="form-group">
-                                <label class="col-lg-2 control-label"><i class="material-icons">perm_identity</i></label>
-                                <div class="col-lg-10">
-                                    <div class="radio col-lg-4">
+                            <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 left-inner-addon">
+                                <br><i class="material-icons">perm_identity</i>
+                                <div class="radio col-lg-4 col-lg-offset-2 col-md-2 col-sm-offset-2 col-xs-offset-2">
                                         <label>
                                             <input type="radio" name="userGender"  value="MALE" checked="">
                                             Male
                                         </label>
                                     </div>
-                                    <div class="radio col-lg-6">
+                                    <div class="radio col-lg-4 col-lg-offset-2 col-md-2 col-sm-offset-2 col-xs-offset-2">
                                         <label>
                                             <input type="radio" name="userGender"  value="FEMALE">
                                             Female
                                         </label>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-lg-12">
-                                    <center><input type="submit" class="btn-lg btn-primary" ng-disabled="registerForm.$invalid" value="REGISTER ME"></center>
-                                </div>
+                            <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 left-inner-addon">
+                                <br><center><input type="submit" class="btn-lg btn-primary" ng-disabled="registerForm.$invalid" value="REGISTER ME"></center>
                             </div>
                         </fieldset>
                     </form>
@@ -83,4 +67,3 @@
         </div> 
     </div>
 </div>
-

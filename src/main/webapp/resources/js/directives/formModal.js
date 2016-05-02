@@ -13,12 +13,18 @@ adminApp.directive('formmodal', function () {
         restrict: 'E',
         scope: true,
         link: function (scope, element, attrs) {
-            scope.title = attrs.title;
+
             scope.$watch(attrs.visible, function (value) {
+             
                 if (value == true)
                     $(element).modal('show');
                 else
                     $(element).modal('hide');
+            });
+            
+             scope.$watch(attrs.title, function (value) {
+                 scope.title = value;
+                
             });
             
             $(element).on('visibles.bs.modal', function () {
