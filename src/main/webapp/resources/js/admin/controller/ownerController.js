@@ -1,15 +1,11 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 adminApp.controller('ownerController', function ($scope, $http) {
     $scope.owner = {};
     $scope.myWelcome = {};
     $scope.ownerHidden = false;
+    $scope.title="Amit";
+    
     $scope.hideDialog = function () {
+        $scope.title="Amit2";//modalTitle;
         $scope.ownerHidden = !$scope.ownerHidden;
     };
     $scope.getOwnerList = function () {
@@ -21,7 +17,7 @@ adminApp.controller('ownerController', function ($scope, $http) {
         }, function myError(response) {
             $scope.myWelcome = response.statusText;
         });
-    }
+    };
 
     $scope.insertOwner = function () {
         $http({
@@ -32,11 +28,9 @@ adminApp.controller('ownerController', function ($scope, $http) {
         }).then(function mySuccess(response) {
             $scope.hideDialog();
             $scope.getOwnerList();
-            $scope.owner={};
+            $scope.owner = {};
         }, function myError(response) {
-              response.statusText;
+            response.statusText;
         });
-    }
-
-
+    };
 });

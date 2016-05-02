@@ -554,6 +554,15 @@ ul.nav.nav-second-level.collapse.in {
     display: inline-block;
     font-weight: 500;
 }
+.element-space{padding-left: 35px;font-size: small;}
+.btn{background-color: #2196F3;border-radius: 0px;border-color:#2196F3 }
+.btn:hover{background-color: #2196F3;border-radius: 0px;border-color:#2196F3 }
+.btn-sm{background-color: #2196F3;border-radius: 0px;border-color:#2196F3 }
+.btn-sm:hover{background-color: #2196F3;border-radius: 0px;border-color:#2196F3 }
+.btn-lg{background-color: #2196F3;border-radius: 0px;border-color:#2196F3 }
+.btn-lg:hover{background-color: #2196F3;border-radius: 0px;border-color:#2196F3 }
+.btn-xs{background-color: #2196F3;border-radius: 0px;border-color:#2196F3 }
+.btn-xs:hover{background-color: #2196F3;border-radius: 0px;border-color:#2196F3 }
 #sideNav{
     position: absolute;
     right: -12px;
@@ -629,4 +638,5 @@ ul.dropdown-menu.dropdown-messages li a div {
 div.error{color: red;font-size: smaller;}
 div.correct{color: green;font-size: smaller;}
 .left-inner-addon {position: relative;}
-.left-inner-addon i {position: absolute;padding: 6px 5px;}
+.left-inner-addon i {position: absolute;padding: 6px 5px;color: #2196F3}
+.btn-icon{vertical-align: middle;}
