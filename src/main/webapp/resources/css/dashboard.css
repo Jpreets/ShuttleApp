@@ -601,7 +601,7 @@ ul.dropdown-menu.dropdown-messages li a div {
     #page-inner {
         padding: 45px 30px;
     }
-    #nav-menu{display: none;}
+    #nav-menu{display: none;width: 100%}
 }
 @media(max-width:480px) {
     .page-header small {
