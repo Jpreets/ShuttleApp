@@ -8,7 +8,7 @@
                     <i class="material-icons">account_circle</i>
                     <input type="text" class="form-control element-space" placeholder="Name" ng-model="owner.ownerName">
                 </div>
-            
+
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
                     <i class="material-icons">email</i>
@@ -21,7 +21,7 @@
                     <i class="material-icons">person_pin_circle</i>
                     <textarea class="form-control element-space" placeholder="Address"  ng-model="owner.ownerAddress"></textarea>
                 </div>
-         
+
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
                     <i class="material-icons">person_pin_circle</i>
@@ -34,7 +34,7 @@
                     <i class="material-icons">map</i>
                     <input type="text" class="form-control element-space" placeholder="Country" ng-model="owner.ownerCountry">
                 </div>
-            
+
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
                     <i class="material-icons">place</i>
                     <input type="text" class="form-control element-space" placeholder="State" ng-model="owner.ownerState">
@@ -45,14 +45,15 @@
                     <i class="material-icons">local_phone</i>
                     <input type="text" class="form-control element-space" placeholder="Phone" ng-model="owner.ownerPhone">
                 </div>
-            
+
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 col-lg-offset-3 left-inner-addon"><br>
                     <button type="submit" class="btn btn-primary form-control">Submit</button>
                 </div>
             </div>
         </form> </formmodal>
-    <div>          
-        <table class="table table-responsive">
+
+    <div style="overflow-x:auto;">
+        <table class="table table-condensed table-striped table-responsive">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -62,11 +63,11 @@
                     <th>City</th>
                     <th>State</th>
                     <th>Country</th>
-                    
+
                 </tr>
             </thead>
             <tbody ng-repeat="person in myWelcome">
-                <tr ng-if="person.ownerName.length>0 && person.ownerState.length>0 ">
+                <tr ng-if="person.ownerName.length > 0 && person.ownerState.length > 0">
                     <td>{{person.ownerName}}</td>
                     <td>{{person.ownerEmail}}</td>
                     <td>{{person.ownerPhone}}</td>

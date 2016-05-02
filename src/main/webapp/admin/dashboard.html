@@ -9,7 +9,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" />
         <link href="/ShuttleApp/resources/css/dashboard.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-            <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
@@ -24,7 +24,7 @@
         <div id="wrapper">
             <nav class="navbar navbar-default top-navbar" role="navigation">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <button type="button" class="navbar-toggle">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -239,38 +239,38 @@
                 </ul>
             </nav>
             <!--/. NAV TOP  -->
-            <nav class="navbar-default navbar-side" role="navigation">
+            <nav id="nav-menu" class="navbar-default navbar-side" role="navigation">
                 <div id="sideNav">
                     <i class="fa fa-caret-right"></i></div>
                 <div class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
 
                         <li>
-                            <a class="active-menu" href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
+                            <a class="active-menu" href="#"><i class="fa fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="owner"><i class="fa fa-desktop"></i>Owner</a>
+                            <a href="#owner"><i class="fa fa-desktop"></i>Owner</a>
                         </li>
                         <li>
-                            <a href="vehicles"><i class="fa fa-bar-chart-o"></i>Vehicles</a>
+                            <a href="#vehicles"><i class="fa fa-bar-chart-o"></i>Vehicles</a>
                         </li>
                         <li>
-                            <a href="drivers"><i class="fa fa-qrcode"></i>Drivers</a>
-                        </li>
-
-                        <li>
-                            <a href="routes"><i class="fa fa-table"></i>Routes</a>
-                        </li>
-                        <li>
-                            <a href="transactions"><i class="fa fa-edit"></i> Transactions </a>
+                            <a href="#drivers"><i class="fa fa-qrcode"></i>Drivers</a>
                         </li>
 
                         <li>
-                            <a href="form.html"><i class="fa fa-edit"></i> Tracking </a>
+                            <a href="#routes"><i class="fa fa-table"></i>Routes</a>
+                        </li>
+                        <li>
+                            <a href="#transactions"><i class="fa fa-edit"></i> Transactions </a>
                         </li>
 
                         <li>
-                            <a href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                            <a href="#form"><i class="fa fa-edit"></i> Tracking </a>
+                        </li>
+
+                        <li>
+                            <a href="#empty"><i class="fa fa-fw fa-file"></i> Empty Page</a>
                         </li>
                     </ul>
                 </div>
@@ -286,5 +286,13 @@
         <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.0/metisMenu.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("button").click(function () {
+                    $("#nav-menu").toggle(200);
+                });
+            });
+        </script>
     </body>
+
 </html>

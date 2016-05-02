@@ -1,31 +1,30 @@
 
 var adminApp = angular.module('adminApp', ['ngRoute']);
 
-adminApp.config(function ($routeProvider, $locationProvider) {
+adminApp.config(function ($routeProvider) {
     $routeProvider
-            .when('/ShuttleApp/admin/vehicles', {
+            .when('/', {
                 templateUrl: 'vehicles.html'
             })
-            .when('/ShuttleApp/admin/owner', {
+            .when('/vehicles', {
+                templateUrl: 'vehicles.html'
+            })
+            .when('/owner', {
                 templateUrl: 'owner.html',
                 controller: 'ownerController'
             })
-            .when('/ShuttleApp/admin/routes', {
+            .when('/routes', {
                 templateUrl: 'routes.html'
             })
-            .when('/ShuttleApp/admin/transaction', {
+            .when('/transaction', {
                 templateUrl: 'transaction.html'
             })
-            .when('/ShuttleApp/admin/drivers', {
+            .when('/drivers', {
                 templateUrl: 'drivers.html',
                 controller: 'driverController'
             })
             .otherwise({
                 redirectTo: '/ShuttleApp/admin/dashboard.html'
             });
-    $locationProvider.html5Mode({
-        enabled: false,
-        requireBase: true
-    });
 
 });
