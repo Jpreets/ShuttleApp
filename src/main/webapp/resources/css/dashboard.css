@@ -588,13 +588,12 @@ ul.dropdown-menu.dropdown-messages li a div {
     .navbar-side {
         width: 200px;
         z-index: 1;
-
     }
 
     .navbar {
         border-radius: 0px; 
     }
-
+    #nav-menu{display: block}
 }
 @media(max-width:768px) {
     .navbar-side {    top: 126px;}
@@ -632,4 +631,10 @@ div.correct{color: green;font-size: smaller;}
 
 #main-menu li :hover{
     background-color: #2196F3 !important;
+}
+.even{
+    background-color: white;
+}
+.odd{
+    background-color: whitesmoke;
 }

@@ -64,9 +64,10 @@
             </div>
         </form> </formmodal>
 
-    <div style="overflow-x:auto; overflow-y: auto;height:800px">
-        <table class="table table-condensed table-striped table-responsive">
-            <thead>
+    <div style="overflow-x:auto;" class="table-responsive">
+                                  
+        <table class="table table-condensed table-bordered table-hover">
+            <thead style="background-color: #2196F3;color: white">
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
@@ -75,11 +76,12 @@
                     <th>City</th>
                     <th>State</th>
                     <th>Country</th>
+                    <th></th>
 
                 </tr>
             </thead>
             <tbody ng-repeat="person in myWelcome">
-                <tr ng-if="person.ownerName.length > 0 && person.ownerState.length > 0">
+                <tr ng-if="person.ownerName.length > 0 && person.ownerState.length > 0" ng-class="{even: $even, odd: $odd}">
                     <td>{{person.ownerName}}</td>
                     <td>{{person.ownerEmail}}</td>
                     <td>{{person.ownerPhone}}</td>
@@ -87,7 +89,7 @@
                     <td>{{person.ownerCity}}</td>
                     <td>{{person.ownerState}}</td>
                     <td>{{person.ownerCountry}}</td>
-                    <td ng-click="hideDialog(person,true)" style="cursor: pointer;color: #2196F3"><i class="material-icons btn-icon">edit</i></td>
+                    <td ng-click="hideDialog(person,true)" style="cursor: pointer;color: #2196F3;text-align: center"><i class="material-icons btn-icon">edit</i></td>
                 </tr>
             </tbody>
         </table>
