@@ -61,6 +61,11 @@ public class IndexController {
                 user.setUserPassword(BCrypt.hashpw(user.getUserPassword(),
                         ShuttleConstants.SALT));//hash user password before storing
 
+                UserBean lastUser = userRepository.findTopByOrderByUserIdDesc();
+                System.out.println(lastUser);
+                if(lastUser!=null){
+                user.setUserId((lastUser.getUserId()) + 1);}
+                else{user.setUserId(1);}
                 if (userRepository.save(user) != null) {
 
                     notification.sendWelcomeMail(user);//trigger welcome mail
@@ -88,7 +93,7 @@ public class IndexController {
     }
 
     /**
-     * 
+     *
      *
      * @param userEmail
      * @return

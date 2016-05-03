@@ -12,4 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends MongoRepository<UserBean,String>{
 
      UserBean findByUserEmail(String userEmail);
+     UserBean findTopByOrderByUserIdDesc();
 }

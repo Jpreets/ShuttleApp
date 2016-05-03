@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.Email;
 public class UserBean {
 
     @Id
-    private String userId;
+    private int userId;
     @Size(min = 3, max = 100, message = "Name must be atleast 3 characters in length and less than 100 characters")
     private String userName;
     @Email
@@ -80,11 +80,11 @@ public class UserBean {
         this.userRole = userRole;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
