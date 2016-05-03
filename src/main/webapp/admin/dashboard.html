@@ -14,9 +14,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
         <script src="/ShuttleApp/resources/js/admin/app.js"></script>
         <script src="/ShuttleApp/resources/js/admin/controller/driverController.js"></script>
         <script src="/ShuttleApp/resources/js/admin/controller/ownerController.js"></script>
+        <script src="/ShuttleApp/resources/js/admin/controller/dashboardController.js"></script>
         <script src="/ShuttleApp/resources/js/directives/formModal.js"></script>
     </head>
 
@@ -242,24 +244,24 @@
             <nav id="nav-menu" class="navbar-default navbar-side" role="navigation">
                 <div id="sideNav">
                     <i class="fa fa-caret-right"></i></div>
-                <div class="sidebar-collapse">
+                 <div class="sidebar-collapse" ng-controller="selectedFilter">
                     <ul class="nav" id="main-menu">
 
-                        <li>
-                            <a class="active-menu" href="#"><i class="fa fa-dashboard"></i> Dashboard</a>
+                        <li ng-click="select('dashboard')">
+                            <a ng-class="{'active-menu':'dashboard'==selected}" href="#"><i class="fa fa-dashboard"></i> Dashboard</a>
                         </li>
-                        <li>
-                            <a href="#owner"><i class="fa fa-desktop"></i>Owner</a>
+                        <li ng-click="select('owner')">
+                            <a href="#owner" ng-class="{'active-menu':'owner'==selected}"><i class="fa fa-desktop"></i>Owner</a>
                         </li>
-                        <li>
-                            <a href="#vehicles"><i class="fa fa-bar-chart-o"></i>Vehicles</a>
+                        <li ng-click="select('vehicles')">
+                            <a href="#vehicles" ng-class="{'active-menu':'vehicles'==selected}"><i class="fa fa-bar-chart-o"></i>Vehicles</a>
                         </li>
-                        <li>
-                            <a href="#drivers"><i class="fa fa-qrcode"></i>Drivers</a>
+                        <li ng-click="select('drivers')">
+                            <a href="#drivers" ng-class="{'active-menu':'drivers'==selected}"><i class="fa fa-qrcode"></i>Drivers</a>
                         </li>
 
-                        <li>
-                            <a href="#routes"><i class="fa fa-table"></i>Routes</a>
+                        <li ng-click="select('routes')">
+                            <a href="#routes" ng-class="{'active-menu':'routes'==selected}" ><i class="fa fa-table"></i>Routes</a>
                         </li>
                         <li>
                             <a href="#transactions"><i class="fa fa-edit"></i> Transactions </a>

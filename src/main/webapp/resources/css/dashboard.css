@@ -629,3 +629,7 @@ div.correct{color: green;font-size: smaller;}
 .left-inner-addon i {position: absolute;padding: 6px 5px;color: #2196F3}
 .btn-icon{vertical-align: middle;}
 .element-space{padding-left: 35px !important;font-size: small !important;}
+
+#main-menu li :hover{
+    background-color: #2196F3 !important;
+}
