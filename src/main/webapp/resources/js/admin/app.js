@@ -4,7 +4,8 @@ var adminApp = angular.module('adminApp', ['ngRoute']);
 adminApp.config(function ($routeProvider) {
     $routeProvider
             .when('/', {
-                templateUrl: 'vehicles.html'
+               templateUrl: 'report.html'
+
             })
             .when('/vehicles', {
                 templateUrl: 'vehicles.html'

@@ -30,9 +30,8 @@ public class AdminController {
     @ResponseBody
     public String insertOwner(@RequestBody final String owner) {
         try {
-            ObjectMapper mapper = new ObjectMapper();
 
-            OwnerBean s = mapper.readValue(owner, OwnerBean.class);
+            OwnerBean s = new ObjectMapper().readValue(owner, OwnerBean.class);
             if (owner != null) {
                 
                 ownerRepository.save(s);

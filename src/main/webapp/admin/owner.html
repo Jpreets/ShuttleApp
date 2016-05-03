@@ -1,7 +1,8 @@
 <div style="width:100%" ng-init="getOwnerList()"> 
     <button ng-click="hideDialog(null,false)" class="btn-xs btn-primary"><i class="material-icons btn-icon">add_circle_outline</i>Owner</button>
-    <formmodal title="ctitle" visible="ownerHidden">
+    <formmodal title="titleName" visible="ownerHidden">
         <form role="form" class="form-horizontal" id="ownerForm" name="ownerForm" ng-submit="insertOwner()">
+
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
