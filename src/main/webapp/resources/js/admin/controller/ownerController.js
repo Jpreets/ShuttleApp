@@ -8,12 +8,8 @@ adminApp.controller('ownerController', function ($scope, $http) {
     $scope.hideDialog = function (owner,isEdit) {
 
         $scope.ownerHidden = !$scope.ownerHidden;
-        $scope.owner = owner;
-
-        if (isEdit)
-            $scope.titleName = "Edit Owner";
-        else
-            $scope.titleName = "Add Owner";
+        $scope.owner = angular.copy(owner);
+        $scope.titleName = isEdit?"Edit Owner":"Add Owner";
     };
     
     $scope.getOwnerList = function () {
