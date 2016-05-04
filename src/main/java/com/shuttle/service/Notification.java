@@ -24,7 +24,7 @@ public class Notification {
         try {
             email.sendMail(ShuttleConstants.SHUTTLE_EMAIL, user.getUserEmail(),
                     ShuttleConstants.WELCOME_MAIL_SUBJECT,
-                    ShuttleConstants.WELCOME_MAIL_BODY.replaceAll("<<username>>", user.getUserName()));
+                    ShuttleConstants.WELCOME_MAIL_BODY.replaceAll(ShuttleConstants.TAG_USER_NAME, user.getUserName()));
         } catch (Exception e) {
             e.printStackTrace();
         }
