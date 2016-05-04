@@ -62,7 +62,6 @@ public class IndexController {
                         ShuttleConstants.SALT));//hash user password before storing
 
                 UserBean lastUser = userRepository.findTopByOrderByUserIdDesc();
-                System.out.println(lastUser);
                 if(lastUser!=null){
                 user.setUserId((lastUser.getUserId()) + 1);}
                 else{user.setUserId(1);}
