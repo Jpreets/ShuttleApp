@@ -6,17 +6,17 @@
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
                     <i class="material-icons">account_circle</i>
-                    <input type="text" class="form-control element-space" placeholder="Name" ng-model="owner.ownerName" name="ownerName" required>
-                    <span style="color:red" ng-show="ownerForm.ownerName.$invalid && !ownerForm.ownerName.$pristine">Name is required.</span>
+                    <input type="text" class="form-control element-space" placeholder="Name" ng-model="owner.userName" name="ownerName" required>
+                    <span style="color:red" ng-show="ownerForm.userName.$invalid && !ownerForm.userName.$pristine">Name is required.</span>
                 </div>
 
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
                     <i class="material-icons">email</i>
-                    <input type="email" class="form-control element-space" placeholder="Email" ng-model="owner.ownerEmail" name="ownerEmail"  required>
-                    <span style="color:red" ng-show="ownerForm.ownerEmail.$dirty && ownerForm.ownerEmail.$invalid">
-                        <span ng-show="ownerForm.ownerEmail.$error.required">Email is required.</span>
-                        <span ng-show="ownerForm.ownerEmail.$error.email">Invalid email address.</span>
+                    <input type="email" class="form-control element-space" placeholder="Email" ng-model="owner.userEmail" name="ownerEmail"  required>
+                    <span style="color:red" ng-show="ownerForm.userEmail.$dirty && ownerForm.userEmail.$invalid">
+                        <span ng-show="ownerForm.userEmail.$error.required">Email is required.</span>
+                        <span ng-show="ownerForm.userEmail.$error.email">Invalid email address.</span>
                     </span>
                 </div>
             </div>
@@ -24,37 +24,42 @@
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
                     <i class="material-icons">person_pin_circle</i>
-                    <textarea class="form-control element-space" placeholder="Address"  ng-model="owner.ownerAddress" required name="ownerAddress"></textarea>
-                    <span style="color:red" ng-show="ownerForm.ownerAddress.$invalid && !ownerForm.ownerAddress.$pristine">Address is required.</span>
+                    <textarea class="form-control element-space" placeholder="Address"  ng-model="owner.userAddress" required name="ownerAddress"></textarea>
+                    <span style="color:red" ng-show="ownerForm.userAddress.$invalid && !ownerForm.userAddress.$pristine">Address is required.</span>
                 </div>
 
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
                     <i class="material-icons">person_pin_circle</i>
-                    <input type="text" class="form-control element-space" placeholder="City" ng-model="owner.ownerCity" required name="ownerCity">
-                    <span style="color:red" ng-show="ownerForm.ownerCity.$invalid && !ownerForm.ownerCity.$pristine">City is required.</span>
+                    <input type="text" class="form-control element-space" placeholder="City" ng-model="owner.userCity" required name="ownerCity">
+                    <span style="color:red" ng-show="ownerForm.userCity.$invalid && !ownerForm.userCity.$pristine">City is required.</span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
                     <i class="material-icons">map</i>
-                    <input type="text" class="form-control element-space" placeholder="Country" ng-model="owner.ownerCountry" required name="ownerCountry">
-                    <span style="color:red" ng-show="ownerForm.ownerCountry.$invalid && !ownerForm.ownerCountry.$pristine">Country is required.</span>
+                    <input type="text" class="form-control element-space" placeholder="Country" ng-model="owner.userCountry" required name="ownerCountry">
+                    <span style="color:red" ng-show="ownerForm.userCountry.$invalid && !ownerForm.userCountry.$pristine">Country is required.</span>
                 </div>
 
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
                     <i class="material-icons">place</i>
-                    <input type="text" class="form-control element-space" placeholder="State" ng-model="owner.ownerState">
+                    <input type="text" class="form-control element-space" placeholder="State" ng-model="owner.userState">
+                </div>
+               
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon" style="display:none">
+                    <i class="material-icons">place</i>
+                    <input type="text" class="form-control element-space" placeholder="State" ng-init="owner.ownerRole='ROLE_OWNER'">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"></br>
                     <i class="material-icons">local_phone</i>
-                    <input type="text" class="form-control element-space" placeholder="Phone" ng-model="owner.ownerPhone" required ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" name="ownerPhone">
-                    <span style="color:red" ng-show="ownerForm.ownerPhone.$dirty && ownerForm.ownerPhone.$invalid">
-                        <span ng-show="ownerForm.ownerPhone.$error.required">Mobile Number is required.</span>
-                        <span ng-show="ownerForm.ownerPhone.$error.pattern">Please enter a valid mobile number</span>
+                    <input type="text" class="form-control element-space" placeholder="Contact" ng-model="owner.userContact" required ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" name="ownerPhone">
+                    <span style="color:red" ng-show="ownerForm.userContact.$dirty && ownerForm.userContact.$invalid">
+                        <span ng-show="ownerForm.userContact.$error.required">Mobile Number is required.</span>
+                        <span ng-show="ownerForm.userContact.$error.pattern">Please enter a valid mobile number</span>
                     </span>
                 </div>
 
@@ -81,14 +86,14 @@
                 </tr>
             </thead>
             <tbody ng-repeat="person in myWelcome">
-                <tr ng-if="person.ownerName.length > 0 && person.ownerState.length > 0" ng-class="{even: $even, odd: $odd}">
-                    <td>{{person.ownerName}}</td>
-                    <td>{{person.ownerEmail}}</td>
-                    <td>{{person.ownerPhone}}</td>
-                    <td>{{person.ownerAddress}}</td>
-                    <td>{{person.ownerCity}}</td>
-                    <td>{{person.ownerState}}</td>
-                    <td>{{person.ownerCountry}}</td>
+                <tr ng-if="person.userName.length > 0 && person.userState.length > 0" ng-class="{even: $even, odd: $odd}">
+                    <td>{{person.userName}}</td>
+                    <td>{{person.userEmail}}</td>
+                    <td>{{person.userPhone}}</td>
+                    <td>{{person.userAddress}}</td>
+                    <td>{{person.userCity}}</td>
+                    <td>{{person.userState}}</td>
+                    <td>{{person.userCountry}}</td>
                     <td ng-click="hideDialog(person,true)" style="cursor: pointer;color: #2196F3;text-align: center"><i class="material-icons btn-icon">edit</i></td>
                 </tr>
             </tbody>
