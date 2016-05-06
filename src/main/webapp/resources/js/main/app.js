@@ -1,4 +1,4 @@
-var shuttleApp = angular.module('mainApp', ['ngRoute', 'ngAnimate']);
+var shuttleApp = angular.module('mainApp', ['ngRoute', 'ngAnimate','ui.bootstrap']);
 
 shuttleApp.config(function ($routeProvider) {
     $routeProvider

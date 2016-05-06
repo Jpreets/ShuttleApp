@@ -11,7 +11,9 @@ public interface ShuttleConstants {
     public static final String USER_FORGOT_PASSWORD = "/forgotPassword";
     public static final String USER_CHANGE_PASSWORD = "/ChangePasswordSubmit";
     public static final String ADMIN_ADD_OWNER = "/addOwner";
+    public static final String ADMIN_ADD_Vehicle = "/addVehicle";
     public static final String ADMIN_GET_OWNERS = "/getOwnerList";
+    public static final String ADMIN_GET_VEHICLES = "/getVehicleList";
 
     /*MAIL CONSTANTS*/
     public static final String WELCOME_MAIL_BODY = "<center><h2>Mindfire Shuttle</h2></center><br><br><h4>Hi  <<userName>>"

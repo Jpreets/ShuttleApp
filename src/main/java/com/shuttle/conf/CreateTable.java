@@ -8,12 +8,10 @@ package com.shuttle.conf;
 import org.springframework.stereotype.Component;
 import com.shuttle.repository.RoleRepository;
 import java.util.ArrayList;
-import javax.annotation.PostConstruct;
 import com.shuttle.bean.RoleBean;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.EventListener;
 
 /**

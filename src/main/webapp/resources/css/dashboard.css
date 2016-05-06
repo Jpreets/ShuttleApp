@@ -1,6 +1,7 @@
 /*----------------------------------------------
     COMMON  STYLES    
 ------------------------------------------------*/
+.bootstrap-datetimepicker-widget{z-index: 10000 !important; }
 body {
     font-family: 'Open Sans', sans-serif;
     background: #1F1F1F;

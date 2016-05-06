@@ -4,11 +4,12 @@ var adminApp = angular.module('adminApp', ['ngRoute']);
 adminApp.config(function ($routeProvider) {
     $routeProvider
             .when('/', {
-               templateUrl: 'report.html'
+                templateUrl: 'report.html'
 
             })
             .when('/vehicles', {
-                templateUrl: 'vehicles.html'
+                templateUrl: 'vehicles.html',
+                controller: 'vehicleController'
             })
             .when('/owner', {
                 templateUrl: 'owner.html',

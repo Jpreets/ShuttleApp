@@ -4,19 +4,27 @@
  */
 package com.shuttle.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "vehicle")
 public class VehicleBean {
 
+    @Id
     private String vehicleId;
-    private String vehiceName;
-    private String vehiceType;
-    private String vehiceRegNo;
+    private String vehicleName;
+    private String vehicleType;
+    private String vehicleFuelType;
+    private String vehicleRegNo;
+    private String vehicleColor;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy")
     private Date vehiclePermitEndTime;
-    private Date vehicleCreatedTime;
-    private Date vehicleLastUpdateTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy")
+    private Date vehicleInsuranceExpiry;
+    private String vehicleCreatedTime;
+    private String vehicleLastUpdateTime;
     private String vehicleOwnerId;
 
     public String getVehicleId() {
@@ -27,52 +35,28 @@ public class VehicleBean {
         this.vehicleId = vehicleId;
     }
 
-    public String getVehiceName() {
-        return vehiceName;
+    public String getVehicleName() {
+        return vehicleName;
     }
 
-    public void setVehiceName(String vehiceName) {
-        this.vehiceName = vehiceName;
+    public void setVehicleName(String vehicleName) {
+        this.vehicleName = vehicleName;
     }
 
-    public String getVehiceType() {
-        return vehiceType;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setVehiceType(String vehiceType) {
-        this.vehiceType = vehiceType;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
-    public String getVehiceRegNo() {
-        return vehiceRegNo;
+    public String getVehicleRegNo() {
+        return vehicleRegNo;
     }
 
-    public void setVehiceRegNo(String vehiceRegNo) {
-        this.vehiceRegNo = vehiceRegNo;
-    }
-
-    public Date getVehiclePermitEndTime() {
-        return vehiclePermitEndTime;
-    }
-
-    public void setVehiclePermitEndTime(Date vehiclePermitEndTime) {
-        this.vehiclePermitEndTime = vehiclePermitEndTime;
-    }
-
-    public Date getVehicleCreatedTime() {
-        return vehicleCreatedTime;
-    }
-
-    public void setVehicleCreatedTime(Date vehicleCreatedTime) {
-        this.vehicleCreatedTime = vehicleCreatedTime;
-    }
-
-    public Date getVehicleLastUpdateTime() {
-        return vehicleLastUpdateTime;
-    }
-
-    public void setVehicleLastUpdateTime(Date vehicleLastUpdateTime) {
-        this.vehicleLastUpdateTime = vehicleLastUpdateTime;
+    public void setVehicleRegNo(String vehicleRegNo) {
+        this.vehicleRegNo = vehicleRegNo;
     }
 
     public String getVehicleOwnerId() {
@@ -83,4 +67,56 @@ public class VehicleBean {
         this.vehicleOwnerId = vehicleOwnerId;
     }
 
+    public Date getVehiclePermitEndTime() {
+        return vehiclePermitEndTime;
+    }
+
+    public void setVehiclePermitEndTime(Date vehiclePermitEndTime) {
+        this.vehiclePermitEndTime = vehiclePermitEndTime;
+    }
+
+    public String getVehicleCreatedTime() {
+        return vehicleCreatedTime;
+    }
+
+    public void setVehicleCreatedTime(String vehicleCreatedTime) {
+        this.vehicleCreatedTime = vehicleCreatedTime;
+    }
+
+    public String getVehicleLastUpdateTime() {
+        return vehicleLastUpdateTime;
+    }
+
+    public void setVehicleLastUpdateTime(String vehicleLastUpdateTime) {
+        this.vehicleLastUpdateTime = vehicleLastUpdateTime;
+    }
+
+    public String getVehicleFuelType() {
+        return vehicleFuelType;
+    }
+
+    public void setVehicleFuelType(String vehicleFuelType) {
+        this.vehicleFuelType = vehicleFuelType;
+    }
+
+    public Date getVehicleInsuranceExpiry() {
+        return vehicleInsuranceExpiry;
+    }
+
+    public void setVehicleInsuranceExpiry(Date vehicleInsuranceExpiry) {
+        this.vehicleInsuranceExpiry = vehicleInsuranceExpiry;
+    }
+
+    public String getVehicleColor() {
+        return vehicleColor;
+    }
+
+    public void setVehicleColor(String vehicleColor) {
+        this.vehicleColor = vehicleColor;
+    }
+
+    @Override
+    public String toString() {
+        return "VehicleBean{" + "vehicleId=" + vehicleId + ", vehicleName=" + vehicleName + ", vehicleType=" + vehicleType + ", vehicleRegNo=" + vehicleRegNo + ", vehiclePermitEndTime=" + vehiclePermitEndTime + ", vehicleCreatedTime=" + vehicleCreatedTime + ", vehicleLastUpdateTime=" + vehicleLastUpdateTime + ", vehicleOwnerId=" + vehicleOwnerId + '}';
+    }
 }

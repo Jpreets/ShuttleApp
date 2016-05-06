@@ -1,82 +1,117 @@
-<div style="width:100%" ng-init="getOwnerList()"> 
-    <button ng-click="hideDialog()" class="btn-xs btn-primary"><i class="material-icons btn-icon">add_circle_outline</i>Vehicle</button>
-    <formmodal title="Add Vehicle" visible="ownerHidden">
-        <form role="form" class="form-horizontal" id="ownerForm" ng-submit="insertOwner()">
+<div style="width:100%" ng-init="getVehicleList()"> 
+    <button ng-click="hideDialog({}, false);getOwnerList();" class="btn-xs btn-primary" style="margin-bottom: 30px"><i class="material-icons btn-icon">add_circle_outline</i>Vehicle</button>
+    <formmodal title="titleName" visible="vehicleHidden">
+        <form role="form" class="form-horizontal" name="form.vehicleForm" ng-submit="insertVehicle()">
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
-                    <i class="material-icons">account_circle</i>
-                    <input type="text" class="form-control element-space" placeholder="Owner Name" ng-model="owner.ownerName">
+                    <i class="material-icons">format_list_numbered</i>
+                    <input type="text" class="form-control element-space" placeholder="Registration Number" ng-model="vehicle.vehicleRegNo" name="vehicleRegNo" required>
+                    <span style="color:red" ng-show="vehicleForm.vehicleRegNo.$invalid && !vehicleForm.vehicleRegNo.$pristine">Registration Number is required.</span>
                 </div>
 
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
-                    <i class="material-icons">email</i>
-                    <input type="email" class="form-control element-space" placeholder="Email" ng-model="owner.ownerEmail">
+                    <i class="material-icons">directions_car</i>
+                    <input class="form-control element-space" placeholder="Vehicle Name"  ng-model="vehicle.vehicleName" required name="vehicleName">
+                    <span style="color:red" ng-show="vehicleForm.vehicleName.$invalid && !vehicleForm.vehicleName.$pristine">Vehicle Name is required.</span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
-                    <i class="material-icons">person_pin_circle</i>
-                    <textarea class="form-control element-space" placeholder="Address"  ng-model="owner.ownerAddress"></textarea>
+                    <i class="material-icons">directions_bus</i>
+                    <input type="text" class="form-control element-space" placeholder="Vehicle Type" ng-model="vehicle.vehicleType" required name="vehicleType">
+                    <span style="color:red" ng-show="vehicleForm.vehicleType.$invalid && !vehicleForm.vehicleType.$pristine">Vehicle type is required</span>
                 </div>
 
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+
                     <br>
-                    <i class="material-icons">person_pin_circle</i>
-                    <input type="text" class="form-control element-space" placeholder="City" ng-model="owner.ownerCity">
+                    <i class="material-icons">date_range</i>
+                    <input type='text' class="form-control element-space" id='datetimepicker1' placeholder="Permit End Time" ng-model="vehicle.vehiclePermitEndTime" required name="vehiclePermitEndTime" />
+                    <span style="color:red" ng-show="vehicleForm.vehiclePermitEndTime.$invalid && !vehicleForm.vehiclePermitEndTime">Permit End time is required.</span>
+
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
-                    <i class="material-icons">map</i>
-                    <input type="text" class="form-control element-space" placeholder="Country" ng-model="owner.ownerCountry">
+                    <i class="material-icons">directions_bus</i>
+                    <select class="form-control element-space" ng-model="vehicle.vehicleColor" required>
+                        <option style="background: whitesmoke"  value='' disabled="">Select Vehicle Color</option>
+                        <option style="color: black;" value="White">White</option>
+                        <option style="background: silver;color: black" value="Silver">Silver</option>
+                        <option style="background: black;color: white" value="Black">Black</option>
+                        <option style="background: goldenrod;color: black" value="Gold">Gold</option>
+                        <option style="background: grey;color: white" value="Grey">Grey</option>
+                        <option style="background: blue;color: white" value="Blue">Blue</option>
+                        <option style="background: red;color: white;" value="Red">Red</option>
+                        <option style="background: brown;color: white" value="Brown">Brown</option>
+                        <option style="background: green;color: white;" value="Green">Green</option>
+                    </select>
+                    <span style="color:red" ng-show="vehicleForm.vehicleType.$invalid && !vehicleForm.vehicleType.$pristine">Vehicle type is required</span>
                 </div>
 
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+
+                    <br>
+                    <i class="material-icons">date_range</i>
+                    <input type='text' class="form-control element-space" id='datetimepicker2' placeholder="Vehicle Insurance Expiry" ng-model="vehicle.vehicleInsuranceExpiry" required name="vehicleInsuranceExpiry" />
+                    <span style="color:red" ng-show="vehicleForm.vehicleInsuranceExpiry.$invalid && !vehicleForm.vehicleInsuranceExpiry">Permit End time is required.</span>
+
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
-                    <i class="material-icons">place</i>
-                    <input type="text" class="form-control element-space" placeholder="State" ng-model="owner.ownerState">
+                    <i class="material-icons">account_circle</i>
+                    <select class="form-control element-space" ng-model="vehicle.vehicleOwnerId" name="vehicleOwnerId" required>
+                        <option  value='' disabled="">Select Owner</option>
+                        <option ng-repeat="person in vehicleOwners" value="{{person.ownerId}}">{{person.ownerName}}</option>
+                    </select>
+                    <span style="color:red" ng-show="vehicleForm.vehicleOwnerId.$invalid && !vehicleForm.vehicleOwnerId.$pristine">Permit End time is required.</span>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
+                    <i class="material-icons">local_gas_station</i>
+                    <select class="form-control element-space" ng-model="vehicle.vehicleFuelType" name="vehicleOwnerId" required>
+                        <option  value='' disabled="">Select Fuel Type</option>
+                        <option value="CNG">CNG</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Petrol">Petrol</option>
+                    </select>
+                    <span style="color:red" ng-show="vehicleForm.vehicleOwnerId.$invalid && !vehicleForm.vehicleOwnerId.$pristine">Permit End time is required.</span>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"></br>
-                    <i class="material-icons">local_phone</i>
-                    <input type="text" class="form-control element-space" placeholder="Phone" ng-model="owner.ownerPhone">
-                </div>
-
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 col-lg-offset-3 left-inner-addon"><br>
-                    <button type="submit" class="btn btn-primary form-control">Submit</button>
+                    <input type="submit" ng-disabled="vehicleForm.$invalid" class="btn btn-primary form-control" value="Submit">
                 </div>
             </div>
         </form> </formmodal>
 
-    <div style="overflow-x:auto;">
+    <div style="overflow-x:auto;overflow-y: auto;height: 500px" class="table-responsive">
 
-        <table class="table table-condensed table-striped table-responsive">
-            <thead>
+        <table class="table table-condensed table-bordered table-hover">
+            <thead style="background-color: #2196F3;color: white;">
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Country</th>
-
+                    <th>Reg No.</th>
+                    <th>Vehicle Name</th>
+                    <th>Type</th>
+                    <th>Permit End Time</th>
+                    <th>Fuel Type</th>
+                    <th>Owner Id</th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody ng-repeat="person in myWelcome">
-                <tr ng-if="person.ownerName.length > 0 && person.ownerState.length > 0">
-                    <td>{{person.ownerName}}</td>
-                    <td>{{person.ownerEmail}}</td>
-                    <td>{{person.ownerPhone}}</td>
-                    <td>{{person.ownerAddress}}</td>
-                    <td>{{person.ownerCity}}</td>
-                    <td>{{person.ownerState}}</td>
-                    <td>{{person.ownerCountry}}</td>
-                    <td ng-click="hideDialog()" style="cursor: pointer;color: #2196F3"><i class="material-icons btn-icon">edit</i></td>
+            <tbody ng-repeat="shuttleVehicle in vehicles">
+                <tr ng-class="{even: $even, odd: $odd}">
+                    <td>{{shuttleVehicle.vehicleRegNo}}</td>
+                    <td>{{shuttleVehicle.vehicleName}}</td>
+                    <td>{{shuttleVehicle.vehicleType}}</td>
+                    <td>{{shuttleVehicle.vehiclePermitEndTime}}</td>
+                    <td>{{shuttleVehicle.vehicleFuelType}}</td>
+                    <td>{{shuttleVehicle.vehicleOwnerId}}</td>
+                    <td ng-click="hideDialog(shuttleVehicle, true);getOwnerList();" style="cursor: pointer;color: #2196F3;text-align: center"><i class="material-icons btn-icon">edit</i></td>
                 </tr>
             </tbody>
         </table>

@@ -1,14 +1,61 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-adminApp.controller('vehicleController',function($scope,$http){
-     $scope.vehicle={};
+adminApp.controller('vehicleController', function ($scope, $http) {
+    $scope.vehicle = {};
+    $scope.vehicles = {};
+    $scope.form = {};
     $scope.vehicleHidden = false;
-    $scope.hideDialog = function () {
+    $scope.titleName = "Add Vehicle";
+    $scope.vehicleOwners = {};
+$scope.getOwnerList = function () {
+    $http({
+        method: 'GET',
+        url: '/ShuttleApp/service/getOwnerList'
+    }).then(function mySuccess(response) {
+
+        $scope.vehicleOwners = response.data;
+    }, function myError(response) {
+
+        $scope.vehicleOwners = response.statusText;
+    });
+
+};
+
+    $scope.hideDialog = function (vehicle, isEdit) {
+        $('#datetimepicker1').datetimepicker(
+                {   format: 'DD-MMM-YYYY',
+                    minDate:new Date(),
+                    ignoreReadonly: true,
+                    useCurrent: false});
+                 $("#datetimepicker1").on("dp.change", function() {
+        $scope.selecteddate1 = $("#datetimepicker1").val();
+        $scope.vehicle.vehiclePermitEndTime=$scope.selecteddate1;
+    });
+     $('#datetimepicker2').datetimepicker(
+                {   format: 'DD-MMM-YYYY',
+                    minDate:new Date(),
+                    ignoreReadonly: true,
+                    useCurrent: false});
+                 $("#datetimepicker2").on("dp.change", function() {
+        $scope.selecteddate2 = $("#datetimepicker2").val();
+        $scope.vehicle.vehicleInsuranceExpiry=$scope.selecteddate2;
+    });
+
         $scope.vehicleHidden = !$scope.vehicleHidden;
+        $scope.vehicle = angular.copy(vehicle);
+        $scope.titleName = isEdit ? "Edit Vehicle" : "Add Vehicle";
+    };
+
+    $scope.getVehicleList = function () {
+        $http({
+            method: 'GET',
+            url: '/ShuttleApp/service/getVehicleList'
+        }).then(function mySuccess(response) {
+
+            $scope.vehicles = response.data;
+        }, function myError(response) {
+
+            $scope.vehicles = response.statusText;
+        });
     };
 
     $scope.insertVehicle = function () {
@@ -17,18 +64,15 @@ adminApp.controller('vehicleController',function($scope,$http){
             url: '/ShuttleApp/service/addVehicle',
             data: $scope.vehicle,
             headers: {'Content-Type': 'application/html'}
-        })
-                .success(function (data) {
-                    if (data.errors) {
-                        // Showing errors.
-                        $scope.errorName = data.errors.name;
-                        $scope.errorUserName = data.errors.username;
-                        $scope.errorEmail = data.errors.email;
-                    } else {
-                        $scope.vehicle = data;
-                        $scope.message = data.message;
+        }).then(function mySuccess(response) {
+            
+            $scope.vehicle = {};
+            $scope.form.vehicleForm.$setPristine();
+            $scope.hideDialog();
+            $scope.getVehicleList();
+        }, function myError(response) {
 
-                    }
-                });
-    }
-    });
+            response.statusText;
+        });
+    };
+});
