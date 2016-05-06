@@ -9,7 +9,6 @@
                     <input type="text" class="form-control element-space" placeholder="Registration Number" ng-model="vehicle.vehicleRegNo" name="vehicleRegNo" required>
                     <span style="color:red" ng-show="vehicleForm.vehicleRegNo.$invalid && !vehicleForm.vehicleRegNo.$pristine">Registration Number is required.</span>
                 </div>
-
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
                     <i class="material-icons">directions_car</i>
@@ -23,10 +22,10 @@
                     <i class="material-icons">directions_bus</i>
                     <select class="form-control element-space" ng-model="vehicle.vehicleType" required>
                         <option  value='' disabled="">Select Vehicle Type</option>
-                        <option value="1">BUS</option>
-                        <option value="2">Mini BUS</option>
-                        <option value="3">MPV</option>
-                        <option value="4">LUV</option>
+                        <option value="BUS">BUS</option>
+                        <option value="Mini BUS">Mini BUS</option>
+                        <option value="MPV">MPV</option>
+                        <option value="LUV">LUV</option>
                     </select>
                     <span style="color:red" ng-show="vehicleForm.vehicleType.$invalid && !vehicleForm.vehicleType.$pristine">Vehicle type is required</span>
                 </div>
@@ -37,7 +36,6 @@
                     <i class="material-icons">date_range</i>
                     <input type='text' class="form-control element-space" id='datetimepicker1' placeholder="Permit End Time" ng-model="vehicle.vehiclePermitEndTime" required name="vehiclePermitEndTime" />
                     <span style="color:red" ng-show="vehicleForm.vehiclePermitEndTime.$invalid && !vehicleForm.vehiclePermitEndTime">Permit End time is required.</span>
-
                 </div>
             </div>
             <div class="form-group">
@@ -56,16 +54,14 @@
                         <option style="background: brown;color: white" value="Brown">Brown</option>
                         <option style="background: green;color: white;" value="Green">Green</option>
                     </select>
-                    <span style="color:red" ng-show="vehicleForm.vehicleType.$invalid && !vehicleForm.vehicleType.$pristine">Vehicle type is required</span>
+                    <span style="color:red" ng-show="vehicleForm.vehicleColor.$invalid && !vehicleForm.vehicleColor.$pristine">Vehicle color is required</span>
                 </div>
 
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
-
                     <br>
                     <i class="material-icons">date_range</i>
                     <input type='text' class="form-control element-space" id='datetimepicker2' placeholder="Vehicle Insurance Expiry" ng-model="vehicle.vehicleInsuranceExpiry" required name="vehicleInsuranceExpiry" />
-                    <span style="color:red" ng-show="vehicleForm.vehicleInsuranceExpiry.$invalid && !vehicleForm.vehicleInsuranceExpiry">Permit End time is required.</span>
-
+                    <span style="color:red" ng-show="vehicleForm.vehicleInsuranceExpiry.$invalid && !vehicleForm.vehicleInsuranceExpiry">Insurance Expiry is required.</span>
                 </div>
             </div>
             <div class="form-group">
@@ -79,13 +75,13 @@
                 </div>
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
                     <i class="material-icons">local_gas_station</i>
-                    <select class="form-control element-space" ng-model="vehicle.vehicleFuelType" name="vehicleOwnerId" required>
+                    <select class="form-control element-space" ng-model="vehicle.vehicleFuelType" required>
                         <option  value='' disabled="">Select Fuel Type</option>
                         <option value="CNG">CNG</option>
                         <option value="Diesel">Diesel</option>
                         <option value="Petrol">Petrol</option>
                     </select>
-                    <span style="color:red" ng-show="vehicleForm.vehicleOwnerId.$invalid && !vehicleForm.vehicleOwnerId.$pristine">Permit End time is required.</span>
+                    <span style="color:red" ng-show="vehicleForm.vehicleFuelType.$invalid && !vehicleForm.vehicleFuelType.$pristine">Fuel type is required.</span>
                 </div>
             </div>
             <div class="form-group">
@@ -96,7 +92,6 @@
         </form> </formmodal>
 
     <div style="overflow-x:auto;overflow-y: auto;height: 500px" class="table-responsive">
-
         <table class="table table-condensed table-bordered table-hover">
             <thead style="background-color: #2196F3;color: white;">
                 <tr>
