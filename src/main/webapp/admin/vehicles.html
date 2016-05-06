@@ -73,7 +73,7 @@
                     <i class="material-icons">account_circle</i>
                     <select class="form-control element-space" ng-model="vehicle.vehicleOwnerId" name="vehicleOwnerId" required>
                         <option  value='' disabled="">Select Owner</option>
-                        <option ng-repeat="person in vehicleOwners" value="{{person.ownerId}}">{{person.ownerName}}</option>
+                        <option ng-repeat="person in vehicleOwners" value="{{person.userId}}">{{person.userName}}</option>
                     </select>
                     <span style="color:red" ng-show="vehicleForm.vehicleOwnerId.$invalid && !vehicleForm.vehicleOwnerId.$pristine">Permit End time is required.</span>
                 </div>
