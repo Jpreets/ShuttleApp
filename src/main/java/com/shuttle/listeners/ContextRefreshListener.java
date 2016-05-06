@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.shuttle.conf;
+package com.shuttle.listeners;
 
 import org.springframework.stereotype.Component;
 import com.shuttle.repository.RoleRepository;
@@ -21,7 +21,7 @@ import org.springframework.context.event.EventListener;
  * @author AmitPandey
  */
 @Component
-public class CreateTable {
+public class ContextRefreshListener {
 
     @Autowired
     private RoleRepository roleRespository;
