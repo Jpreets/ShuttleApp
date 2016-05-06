@@ -28,6 +28,10 @@ public class UserBean {
     private String userGender;
     private String userRole = "ROLE_ADMIN";
     private String userChangePassword = "Not Changed";
+    private String userAddress;
+    private String userCountry;
+    private String userCity;
+    private String userState;
 
     public UserBean() {
     }
@@ -95,9 +99,44 @@ public class UserBean {
     public void setUserChangePassword(String userChangePassword) {
         this.userChangePassword = userChangePassword;
     }
+    
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public String getUserCountry() {
+        return userCountry;
+    }
+
+    public void setUserCountry(String userCountry) {
+        this.userCountry = userCountry;
+    }
+
+    public String getUserState() {
+        return userState;
+    }
+
+    public void setUserState(String userState) {
+        this.userState = userState;
+    }
+
+    public String getUserCity() {
+        return userCity;
+    }
+
+    public void setUserCity(String userCity) {
+        this.userCity = userCity;
+    }
 
     @Override
     public String toString() {
-        return "UserBean{" + "userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPassword=" + userPassword + ", userContact=" + userContact + ", userGender=" + userGender + ", userRole=" + userRole + ", userChangePassword=" + userChangePassword + '}';
+        return "UserBean{" + "userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPassword=" + userPassword + ", userContact=" + userContact + ", userGender=" + userGender + ", userRole=" + userRole + ", userChangePassword=" + userChangePassword + ", userAddress=" + userAddress + ", userCountry=" + userCountry + ", userCity=" + userCity + ", userState=" + userState + '}';
     }
+
+    
+    
 }

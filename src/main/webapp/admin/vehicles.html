@@ -21,7 +21,13 @@
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
                     <i class="material-icons">directions_bus</i>
-                    <input type="text" class="form-control element-space" placeholder="Vehicle Type" ng-model="vehicle.vehicleType" required name="vehicleType">
+                    <select class="form-control element-space" ng-model="vehicle.vehicleType" required>
+                        <option  value='' disabled="">Select Vehicle Type</option>
+                        <option value="1">BUS</option>
+                        <option value="2">Mini BUS</option>
+                        <option value="3">MPV</option>
+                        <option value="4">LUV</option>
+                    </select>
                     <span style="color:red" ng-show="vehicleForm.vehicleType.$invalid && !vehicleForm.vehicleType.$pristine">Vehicle type is required</span>
                 </div>
 
@@ -37,7 +43,7 @@
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
-                    <i class="material-icons">directions_bus</i>
+                    <i class="material-icons">invert_colors</i>
                     <select class="form-control element-space" ng-model="vehicle.vehicleColor" required>
                         <option style="background: whitesmoke"  value='' disabled="">Select Vehicle Color</option>
                         <option style="color: black;" value="White">White</option>
@@ -97,7 +103,8 @@
                     <th>Reg No.</th>
                     <th>Vehicle Name</th>
                     <th>Type</th>
-                    <th>Permit End Time</th>
+                    <th>Permit End</th>
+                    <th>Insurance Renewal</th>
                     <th>Fuel Type</th>
                     <th>Owner Id</th>
                     <th></th>
@@ -109,6 +116,7 @@
                     <td>{{shuttleVehicle.vehicleName}}</td>
                     <td>{{shuttleVehicle.vehicleType}}</td>
                     <td>{{shuttleVehicle.vehiclePermitEndTime}}</td>
+                    <td>{{shuttleVehicle.vehicleInsuranceExpiry}}</td>
                     <td>{{shuttleVehicle.vehicleFuelType}}</td>
                     <td>{{shuttleVehicle.vehicleOwnerId}}</td>
                     <td ng-click="hideDialog(shuttleVehicle, true);getOwnerList();" style="cursor: pointer;color: #2196F3;text-align: center"><i class="material-icons btn-icon">edit</i></td>

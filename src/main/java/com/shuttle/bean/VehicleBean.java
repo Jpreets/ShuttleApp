@@ -19,6 +19,7 @@ public class VehicleBean {
     private String vehicleFuelType;
     private String vehicleRegNo;
     private String vehicleColor;
+    private String vehicleSeats;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy")
     private Date vehiclePermitEndTime;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy")
@@ -34,6 +35,7 @@ public class VehicleBean {
     public void setVehicleId(String vehicleId) {
         this.vehicleId = vehicleId;
     }
+    
 
     public String getVehicleName() {
         return vehicleName;
@@ -115,8 +117,18 @@ public class VehicleBean {
         this.vehicleColor = vehicleColor;
     }
 
+    public String getVehicleSeats() {
+        return vehicleSeats;
+    }
+
+    public void setVehicleSeats(String vehicleSeats) {
+        this.vehicleSeats = vehicleSeats;
+    }
+
     @Override
     public String toString() {
-        return "VehicleBean{" + "vehicleId=" + vehicleId + ", vehicleName=" + vehicleName + ", vehicleType=" + vehicleType + ", vehicleRegNo=" + vehicleRegNo + ", vehiclePermitEndTime=" + vehiclePermitEndTime + ", vehicleCreatedTime=" + vehicleCreatedTime + ", vehicleLastUpdateTime=" + vehicleLastUpdateTime + ", vehicleOwnerId=" + vehicleOwnerId + '}';
+        return "VehicleBean{" + "vehicleId=" + vehicleId + ", vehicleName=" + vehicleName + ", vehicleType=" + vehicleType + ", vehicleFuelType=" + vehicleFuelType + ", vehicleRegNo=" + vehicleRegNo + ", vehicleColor=" + vehicleColor + ", vehicleSeats=" + vehicleSeats + ", vehiclePermitEndTime=" + vehiclePermitEndTime + ", vehicleInsuranceExpiry=" + vehicleInsuranceExpiry + ", vehicleCreatedTime=" + vehicleCreatedTime + ", vehicleLastUpdateTime=" + vehicleLastUpdateTime + ", vehicleOwnerId=" + vehicleOwnerId + '}';
     }
+    
+    
 }
