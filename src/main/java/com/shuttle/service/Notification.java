@@ -36,6 +36,7 @@ public class Notification {
             email.sendMail(ShuttleConstants.SHUTTLE_EMAIL, user.getUserEmail(),
                     ShuttleConstants.FORGOT_PASSWORD_MAIL_SUBJECT,
                     ShuttleConstants.FORGOT_PASSWORD_MAIL_BODY.
+                    replaceAll(ShuttleConstants.TAG_DOMAIN, ShuttleConstants.DOMAIN).
                     replaceAll(ShuttleConstants.TAG_USER_NAME, user.getUserName()).
                     replaceAll(ShuttleConstants.TAG_TEMP_PASSWORD, tempPassword).
                     replaceAll(ShuttleConstants.TAG_USER_EMAIL, user.getUserEmail()));

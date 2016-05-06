@@ -45,7 +45,7 @@ public class AdminController {
         } catch (Exception ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (result?"success":"failure");
+        return (result?ShuttleConstants.SUCCESS:ShuttleConstants.FAILURE);
     }
 
     @RequestMapping(value = ShuttleConstants.ADMIN_GET_OWNERS, method = RequestMethod.GET, produces = "application/json")
@@ -64,12 +64,12 @@ public class AdminController {
             
             if (vehicle != null) {
                 vehicleRepository.save(s);
-                return "success";
+                return ShuttleConstants.SUCCESS;
             }
         } catch (IOException ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "failure";
+        return ShuttleConstants.FAILURE;
     }
 
     @RequestMapping(value = ShuttleConstants.ADMIN_GET_VEHICLES, method = RequestMethod.GET, produces = "application/json")

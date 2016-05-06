@@ -15,6 +15,10 @@ public interface ShuttleConstants {
     public static final String ADMIN_GET_OWNERS = "/getOwnerList";
     public static final String ADMIN_GET_VEHICLES = "/getVehicleList";
 
+    
+    public static final String DOMAIN="http://localhost:8080/ShuttleApp/";
+    public static final String SUCCESS="success";
+    public static final String FAILURE="failure";
     /*MAIL CONSTANTS*/
     public static final String WELCOME_MAIL_BODY = "<center><h2>Mindfire Shuttle</h2></center><br><br><h4>Hi  <<userName>>"
             + "<br><br>WELCOME ! We are excited to have you on board with us.</h4><br><h5>"
@@ -25,7 +29,7 @@ public interface ShuttleConstants {
     public static final String FORGOT_PASSWORD_MAIL_BODY = "<center><h2>Mindfire Shuttle</h2></center><br><br><h4>Hi <<userName>>"
             + ",<br><br><h4>"
             + "We received a request to reset your password. If you made a request then click below to change else please ignore this email."
-            + "<br><center><a href=\"http://localhost:8080/ShuttleApp/index.html?changePassword?id=<<tempPassword>>&email=<<userEmail>>\">"
+            + "<br><center><a href=\"<<Domain>>index.html?changePassword?id=<<tempPassword>>&email=<<userEmail>>\">"
             + "Click Here to Change Password</a></center><br><br>Your convenience is our priority.<br><br><b>Cheers,<br>Team Shuttle</b></h4>";
     public static final String FORGOT_PASSWORD_MAIL_SUBJECT = "Shuttle Forgot Password";
 
@@ -33,6 +37,7 @@ public interface ShuttleConstants {
     public static final String TAG_USER_NAME = "<<userName>>";
     public static final String TAG_TEMP_PASSWORD = "<<tempPassword>>";
     public static final String TAG_USER_EMAIL = "<<userEmail>>";
+    public static final String TAG_DOMAIN="<<Domain>>";
 
     /*EMAIL*/
     public static final String SHUTTLE_EMAIL = "mindfireprojects@gmail.com";
