@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.annotation.EnableAsync;
 
@@ -19,7 +20,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Configuration
 @ComponentScan({"com.shuttle"})
 @Import({MongoConfig.class})
-@PropertySource("classpath:EmailConfig.properties")
+@PropertySources(@PropertySource("classpath:EmailConfig.properties"))
 public class AppConfig {
 
     @Value("${email.host}")

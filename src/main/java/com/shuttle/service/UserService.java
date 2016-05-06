@@ -28,7 +28,9 @@ public class UserService {
     private Notification notification;
 
     public boolean insertUser(UserBean user) {
+        
         user.setUserEmail(user.getUserEmail().toLowerCase());
+        
         if (userRepository.findByUserEmail(user.getUserEmail()) == null) {
 
             user.setUserName(user.getUserName().toUpperCase());

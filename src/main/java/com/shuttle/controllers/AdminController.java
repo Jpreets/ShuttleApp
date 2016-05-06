@@ -10,8 +10,6 @@ import com.shuttle.bean.VehicleBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.shuttle.repository.OwnerRepository;
 import org.springframework.stereotype.Controller;
 import java.io.IOException;
 import java.util.List;
@@ -32,11 +30,7 @@ public class AdminController {
     
     @Autowired
     private UserService userService;
-    
-  
-    
-    @Autowired
-    private OwnerRepository ownerRepository;
+   
     @Autowired
     private VehicleRepository vehicleRepository;
 
@@ -47,7 +41,6 @@ public class AdminController {
         try {
             UserBean s = new ObjectMapper().readValue(owner, UserBean.class);
             s.setUserRole("ROLE_OWNER");
-            //s.setUserRole(roleRepository.findByRoleName("ROLE_OWNER"));
             result=userService.insertUser(s);
         } catch (Exception ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);

@@ -25,7 +25,8 @@ public interface ShuttleConstants {
     public static final String FORGOT_PASSWORD_MAIL_BODY = "<center><h2>Mindfire Shuttle</h2></center><br><br><h4>Hi <<userName>>"
             + ",<br><br><h4>"
             + "We received a request to reset your password. If you made a request then click below to change else please ignore this email."
-            + "<br><center><a href=\"http://localhost:8080/ShuttleApp/index.html?changePassword?id=<<tempPassword>>&email=<<userEmail>>\">Click Here to Change Password</a></center><br><br>Your convenience is our priority.<br><br><b>Cheers,<br>Team Shuttle</b></h4>";
+            + "<br><center><a href=\"http://localhost:8080/ShuttleApp/index.html?changePassword?id=<<tempPassword>>&email=<<userEmail>>\">"
+            + "Click Here to Change Password</a></center><br><br>Your convenience is our priority.<br><br><b>Cheers,<br>Team Shuttle</b></h4>";
     public static final String FORGOT_PASSWORD_MAIL_SUBJECT = "Shuttle Forgot Password";
 
     /*TAGS USED IN THE SHUTTLE APP*/
