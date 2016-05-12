@@ -14,4 +14,5 @@ public interface UserRepository extends MongoRepository<UserBean,String> {
      List<UserBean> findByUserRole(String role);
      UserBean findByUserEmail(String userEmail);
      UserBean findTopByOrderByUserIdDesc();
+     
 }

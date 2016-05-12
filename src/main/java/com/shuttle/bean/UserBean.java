@@ -137,6 +137,4 @@ public class UserBean {
         return "UserBean{" + "userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPassword=" + userPassword + ", userContact=" + userContact + ", userGender=" + userGender + ", userRole=" + userRole + ", userChangePassword=" + userChangePassword + ", userAddress=" + userAddress + ", userCountry=" + userCountry + ", userCity=" + userCity + ", userState=" + userState + '}';
     }
 
-    
-    
 }

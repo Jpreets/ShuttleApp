@@ -5,6 +5,7 @@
 package com.shuttle.conf;
 
 import java.util.Properties;
+import javax.servlet.MultipartConfigElement;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,12 +16,14 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @EnableAsync
 @Configuration
 @ComponentScan({"com.shuttle"})
 @Import({MongoConfig.class})
-@PropertySources(@PropertySource("classpath:EmailConfig.properties"))
+@PropertySources(
+        @PropertySource("classpath:EmailConfig.properties"))
 public class AppConfig {
 
     @Value("${email.host}")
@@ -32,7 +35,6 @@ public class AppConfig {
     @Value("${email.password}")
     private String password;
 
-    
     @Bean
     public JavaMailSender getmailSender() {
         JavaMailSenderImpl sender = new JavaMailSenderImpl();
@@ -45,6 +47,13 @@ public class AppConfig {
         sender.setPassword(password);
         sender.setJavaMailProperties(properties);
         return sender;
+    }
 
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("utf-8");
+        resolver.setMaxUploadSize(2097152);
+        return resolver;
     }
 }

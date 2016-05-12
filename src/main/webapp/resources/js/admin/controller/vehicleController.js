@@ -9,7 +9,7 @@ adminApp.controller('vehicleController', function ($scope, $http) {
 $scope.getOwnerList = function () {
     $http({
         method: 'GET',
-        url: '/ShuttleApp/service/getOwnerList'
+        url: '/ShuttleApp/service/admin/getOwnerList'
     }).then(function mySuccess(response) {
 
         $scope.vehicleOwners = response.data;
@@ -48,7 +48,7 @@ $scope.getOwnerList = function () {
     $scope.getVehicleList = function () {
         $http({
             method: 'GET',
-            url: '/ShuttleApp/service/getVehicleList'
+            url: '/ShuttleApp/service/admin/getVehicleList'
         }).then(function mySuccess(response) {
 
             $scope.vehicles = response.data;

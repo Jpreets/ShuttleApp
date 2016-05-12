@@ -2,9 +2,9 @@
  * Created Date: 28 April 2016
  * Last Modified Date: 28 April 2016
  */
-
 package com.shuttle.bean;
 
+import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document(collection = "route")
 public class RouteBean {
+
     @Id
     private String routeId;
     private String routeCity;
@@ -24,6 +25,7 @@ public class RouteBean {
     private String routeEndLocation;
     private String routeMapImage;
     private String routeTotalDistance;
+    private List<RouteStopsBean> routeStopsBean;
 
     public String getRouteId() {
         return routeId;
@@ -95,6 +97,19 @@ public class RouteBean {
 
     public void setRouteTotalDistance(String routeTotalDistance) {
         this.routeTotalDistance = routeTotalDistance;
+    }
+    
+    public List<RouteStopsBean> getRouteStopsBean() {
+        return routeStopsBean;
+    }
+
+    public void setRouteStopsBean(List<RouteStopsBean> routeStopsBean) {
+        this.routeStopsBean = routeStopsBean;
+    }
+
+    @Override
+    public String toString() {
+        return "RouteBean{" + "routeId=" + routeId + ", routeCity=" + routeCity + ", routeState=" + routeState + ", routeCountry=" + routeCountry + ", routeZone=" + routeZone + ", routeStartLocation=" + routeStartLocation + ", routeEndLocation=" + routeEndLocation + ", routeMapImage=" + routeMapImage + ", routeTotalDistance=" + routeTotalDistance + ", routeStopsBean=" + routeStopsBean + '}';
     }
     
     

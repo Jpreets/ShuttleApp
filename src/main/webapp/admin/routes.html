@@ -1,63 +1,80 @@
 <div style="width:100%" ng-init="getRouteList()"> 
     <button ng-click="hideDialog({}, false);" class="btn-xs btn-primary" style="margin-bottom: 30px"><i class="material-icons btn-icon">add_circle_outline</i>Route</button>
     <formmodal title="titleName" visible="routeHidden">
-        <form role="form" class="form-horizontal" id="routeForm" name="routeForm" ng-submit="insertRoute()">
+        <form role="form" class="form-horizontal" id="routeForm" name="form.routeForm" enctype="multipart/form-data" ng-submit="insertRoute()">
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
-                    <i class="material-icons">format_list_numbered</i>
-                    <input type="text" class="form-control element-space" placeholder="Registration Number" ng-model="route.routeCity" name="routeCity" required>
+                    <i class="material-icons">person_pin_circle</i>
+                    <input type="text" class="form-control element-space" placeholder="Route City" ng-model="route.routeCity" required>
                     <span style="color:red" ng-show="routeForm.routeCity.$invalid && !routeForm.routeCity.$pristine">City is required.</span>
                 </div>
-
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
-                    <i class="material-icons">directions_car</i>
-                    <input class="form-control element-space" placeholder="Route Name"  ng-model="route.routeState" required name="routeState">
+                    <i class="material-icons">place</i>
+                    <input class="form-control element-space" placeholder="Route State"  ng-model="route.routeState" required name="routeState">
                     <span style="color:red" ng-show="routeForm.routeState.$invalid && !routeForm.routeState.$pristine">State is required.</span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
-                    <i class="material-icons">directions_bus</i>
-                    <input type="text" class="form-control element-space" placeholder="Route Type" ng-model="route.routeCountry" required name="routeCountry">
+                    <i class="material-icons">map</i>
+                    <input type="text" class="form-control element-space" placeholder="Route Country" ng-model="route.routeCountry" required name="routeCountry">
                     <span style="color:red" ng-show="routeForm.routeCountry.$invalid && !routeForm.routeCountry.$pristine">Country is required</span>
                 </div>
-
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
-
                     <br>
                     <i class="material-icons">date_range</i>
-                    <input type='text' class="form-control element-space" placeholder="Permit End Time" ng-model="route.routeZone" required name="routeZone"/>
+                    <input type='text' class="form-control element-space" placeholder="Route Zone" ng-model="route.routeZone" required name="routeZone"/>
                     <span style="color:red" ng-show="routeForm.routeZone.$invalid && !routeForm.routeZone.$pristine">Zone is required.</span>
-
                 </div>
             </div>
             <div class="form-group">
-
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
-                    <i class="material-icons">account_circle</i>
-                    <input type='text' class="form-control element-space" placeholder="Permit End Time" ng-model="route.routeStartLocation" required name="routeZone"/>
+                    <i class="material-icons">location_searching</i>
+                    <input type='text' class="form-control element-space" placeholder="Start Location" ng-model="route.routeStartLocation" required/>
                     <span style="color:red" ng-show="routeForm.routeStartLocation.$invalid && !routeForm.routeStartLocation.$pristine">Start Location is required.</span>
                 </div>
-                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
-                    <i class="material-icons">account_circle</i>
-                    <input type='text' class="form-control element-space" placeholder="Permit End Time" ng-model="route.routeEndLocation" required name="routeZone"/>
-                    <span style="color:red" ng-show="routeForm.routeEndLocation.$invalid && !routeForm.routeEndLocation.$pristine">Start Location is required.</span>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
+                    <i class="material-icons">stop</i>
+                    <input type='text' class="form-control element-space" placeholder="End Location" ng-model="route.routeEndLocation" required />
+                    <span style="color:red" ng-show="routeForm.routeEndLocation.$invalid && !routeForm.routeEndLocation.$pristine">End Location is required.</span>
                 </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
+                <i class="material-icons">file_upload</i>
+                <input type="file" class="form-control element-space" file-model="route.myFile"/>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12"><br>                    
+                    <button type="button" class="btn-small btn-primary" ng-click="addNewChoice()"><i class="addfields material-icons btn-icon">add</i>Add Stop</button>
+                    <div ng-repeat="choice in choices">
+                        <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
+                            <i class="material-icons">location_on</i>
+                            <input type="text" ng-model="choice.routeStop" class="form-control element-space" name="" placeholder="Stop">
+                        </div>
+                        <div class="col-lg-4 col-sm-4 col-xs-4 col-md-4 left-inner-addon"><br>
+                            <i class="material-icons">attach_money</i>
+                            <input type="text" ng-model="choice.routePrice" class="form-control element-space" name="" placeholder="Price">
+                        </div>
+                        <div class="col-lg-2 col-sm-2 col-xs-2 col-md-2"><br>
+                            <i ng-click="removeChoice($index)" class="material-icons">delete</i></div>
+                    </div></div>
             </div>
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 col-lg-offset-3 left-inner-addon"><br>
                     <input type="submit" ng-disabled="routeForm.$invalid" class="btn btn-primary form-control" value="Submit">
                 </div>
             </div>
-        </form> </formmodal>
-
+        </form>
+    </formmodal>
+    <formmodal title="titleName" visible="imageHidden">
+        <img src="/ShuttleApp/service/routeMap/{{imageName}}" alt="image" class="img-responsive"/>
+    </formmodal>
     <div style="overflow-x:auto;" class="table-responsive">
-
-        <table class="table table-condensed table-bordered table-hover">
-            <thead style="background-color: #2196F3;color: white">
+        <table class="table table-condensed table-bordered table-hover header-fixed">
+            <thead style="background-color: #2196F3;color: white;">
                 <tr>
                     <th>City</th>
                     <th>State</th>
@@ -67,16 +84,27 @@
                     <th>End Location</th>
                     <th>Map</th>
                     <th>Total Distance</th>
+                    <th>Stops</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody ng-repeat="shuttleRoute in routes">
-                <tr ng-if="shuttleRoute.routeName.length > 0 && shuttleRoute.routeState.length > 0" ng-class="{even: $even, odd: $odd}">
-                    <td>{{shuttleRoute.vehiceRegNo}}</td>
-                    <td>{{shuttleRoute.routeName}}</td>
-                    <td>{{shuttleRoute.vehiceType}}</td>
-                    <td>{{shuttleRoute.routePermitEndTime}}</td>
-                    <td ng-click="hideDialog(shuttleRoute, true)" style="cursor: pointer;color: #2196F3;text-align: center"><i class="material-icons btn-icon">edit</i></td>
-                </tr>
+                <tr ng-class="{even: $even, odd: $odd}">
+                    <td>{{shuttleRoute.routeCity}}</td>
+                    <td>{{shuttleRoute.routeState}}</td>
+                    <td>{{shuttleRoute.routeCountry}}</td>
+                    <td>{{shuttleRoute.routeZone}}</td>
+                    <td>{{shuttleRoute.routeStartLocation}}</td>
+                    <td>{{shuttleRoute.routeEndLocation}}</td>
+                    <td style="text-align: center" ng-click="toggleImage(shuttleRoute.routeMapImage)"><i class="material-icons">photo</i></td>
+                    <td>{{shuttleRoute.routeTotalDistance}}</td>
+                    <td><ol>
+                        <li ng-repeat="item in shuttleRoute.routeStopsBean track by $index">
+                            Name: {{item.routeStop}}, Price:Rs.{{item.routePrice}}/-
+                        </li></ol>
+                    </td>
+            <td ng-click="hideDialog(shuttleRoute, true)" style="cursor: pointer;color: #2196F3;text-align: center"><i class="material-icons btn-icon">edit</i></td>
+            </tr>
             </tbody>
         </table>
     </div>

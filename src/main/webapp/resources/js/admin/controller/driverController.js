@@ -1,9 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 adminApp.controller('driverController', function ($scope, $http) {
     $scope.driver={};
@@ -15,7 +9,7 @@ adminApp.controller('driverController', function ($scope, $http) {
     $scope.insertDriver = function () {
         $http({
             method: 'POST',
-            url: '/ShuttleApp/service/addDriver',
+            url: '/ShuttleApp/service/admin/addDriver',
             data: $scope.driver,
             headers: {'Content-Type': 'application/html'}
         })
@@ -31,5 +25,5 @@ adminApp.controller('driverController', function ($scope, $http) {
 
                     }
                 });
-    }
+    };
 });

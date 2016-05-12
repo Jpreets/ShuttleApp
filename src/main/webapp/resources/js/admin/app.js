@@ -1,6 +1,4 @@
-
 var adminApp = angular.module('adminApp', ['ngRoute']);
-
 adminApp.config(function ($routeProvider) {
     $routeProvider
             .when('/', {
@@ -16,7 +14,8 @@ adminApp.config(function ($routeProvider) {
                 controller: 'ownerController'
             })
             .when('/routes', {
-                templateUrl: 'routes.html'
+                templateUrl: 'routes.html',
+                controller: 'routeController'
             })
             .when('/transaction', {
                 templateUrl: 'transaction.html'

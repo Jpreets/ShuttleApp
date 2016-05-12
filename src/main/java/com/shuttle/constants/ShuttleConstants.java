@@ -11,9 +11,11 @@ public interface ShuttleConstants {
     public static final String USER_FORGOT_PASSWORD = "/forgotPassword";
     public static final String USER_CHANGE_PASSWORD = "/ChangePasswordSubmit";
     public static final String ADMIN_ADD_OWNER = "/addOwner";
-    public static final String ADMIN_ADD_Vehicle = "/addVehicle";
-    public static final String ADMIN_GET_OWNERS = "/getOwnerList";
-    public static final String ADMIN_GET_VEHICLES = "/getVehicleList";
+    public static final String ADMIN_ADD_VEHICLE = "/addVehicle";
+    public static final String ADMIN_ADD_ROUTE = "/addRoute";
+    public static final String ADMIN_GET_OWNERS = "/admin/getOwnerList";
+    public static final String ADMIN_GET_VEHICLES = "/admin/getVehicleList";
+    public static final String ADMIN_GET_ROUTES = "/admin/getRouteList";
 
     
     public static final String DOMAIN="http://localhost:8080/ShuttleApp/";
@@ -44,4 +46,7 @@ public interface ShuttleConstants {
 
     /*HASHING CONSTANTS*/
     public static final String SALT = "$2a$12$nqfG9jIkLm8th3OpoxX8a.";
+    
+    /*FOLDER CONSTANTS*/
+    public static final String DIRECTORY_ROUTE_MAP="/home/baldeep/Pictures/Route Map/";
 }
