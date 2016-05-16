@@ -1,61 +1,126 @@
-<div style="width:50%" ng-controller="driverController"> 
-    <button ng-click="hideDialog()" class="btn btn-default">Open modal</button>
-    <formmodal title="Driver Form" visible="driverHidden">
-        <form role="form" class="form-horizontal" ng-submit="insertOwner()">
+<div style="width:100%" ng-init="getDriverList()"> 
+    <button ng-click="hideDialog({}, false)" class="btn-xs btn-primary" style="margin-bottom: 30px"><i class="material-icons btn-icon">add_circle_outline</i>Driver</button>
+    <formmodal title="titleName" visible="driverHidden">
+        <div style="display: block;color: red;text-align: center;">{{result}}</div>
+        <form role="form" class="form-horizontal" id="form.driverForm" name="form.driverForm" ng-submit="insertDriver()">
             <div class="form-group">
-                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
-                    </br>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+                    <br>
                     <i class="material-icons">account_circle</i>
-                    <input type="text" class="form-control" id="ownerName" name="inpName" placeholder="Name" ng-model="owner.ownerName" style="padding-left: 35px;font-size: small">
+                    <input type="text" class="form-control element-space" placeholder="Name" ng-model="driver.userName" name="userName" required>
+                    <span style="color:red" ng-show="driverForm.userName.$invalid && !driverForm.userName.$pristine">Name is required.</span>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
-                    </br>
+
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+                    <br>
                     <i class="material-icons">email</i>
-                    <input type="text" class="form-control" id="inpEmail" name="ownerEmail" placeholder="Email" ng-model="owner.ownerEmail" style="padding-left: 35px;font-size: small">
+                    <input type="email" class="form-control element-space" placeholder="Email" ng-model="driver.userEmail" name="userEmail"  required>
+                    <span style="color:red" ng-show="driverForm.userEmail.$dirty && driverForm.userEmail.$invalid">
+                        <span ng-show="driverForm.userEmail.$error.required">Email is required.</span>
+                        <span ng-show="driverForm.userEmail.$error.email">Invalid email address.</span>
+                    </span>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
-                    </br>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+                    <br>
                     <i class="material-icons">person_pin_circle</i>
-                    <textarea class="form-control" id="inpAddress" name="ownerAddress" placeholder="Address"  ng-model="owner.ownerAddress" style="padding-left: 35px;font-size: small"></textarea>
+                    <textarea class="form-control element-space" placeholder="Address"  ng-model="driver.userAddress" required name="userAddress"></textarea>
+                    <span style="color:red" ng-show="driverForm.userAddress.$invalid && !driverForm.userAddress.$pristine">Address is required.</span>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
-                    </br>
+
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+                    <br>
                     <i class="material-icons">person_pin_circle</i>
-                    <input type="text" class="form-control" id="inpCity" name="ownerCity" placeholder="City" ng-model="owner.ownerCity"  style="padding-left: 35px;font-size: small">
+                    <input type="text" class="form-control element-space" placeholder="City" ng-model="driver.userCity" required name="userCity">
+                    <span style="color:red" ng-show="driverForm.userCity.$invalid && !driverForm.userCity.$pristine">City is required.</span>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon">
-                    </br>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+                    <br>
                     <i class="material-icons">map</i>
-                    <input type="text" class="form-control" id="inpCountry" name="ownerCountry" placeholder="Country" ng-model="owner.ownerCountry"  style="padding-left: 35px;font-size: small">
+                    <input type="text" class="form-control element-space" placeholder="Country" ng-model="driver.userCountry" required name="userCountry">
+                    <span style="color:red" ng-show="driverForm.userCountry.$invalid && !driverForm.userCountry.$pristine">Country is required.</span>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon"></br>
+
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
                     <i class="material-icons">place</i>
-                    <input type="text" class="form-control" id="inpState" name="ownerState" placeholder="State" ng-model="owner.ownerState"  style="padding-left: 35px;font-size: small">
+                    <input type="text" class="form-control element-space" placeholder="State" ng-model="driver.userState">
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-12 col-sm-12 col-xs-12 col-md-6 left-inner-addon"></br>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"></br>
                     <i class="material-icons">local_phone</i>
-                    <input type="text" class="form-control" id="inpPhone" name="ownerPhone" placeholder="Phone" ng-model="owner.ownerPhone"  style="padding-left: 35px;font-size: small">
+                    <input type="text" class="form-control element-space" placeholder="Contact" ng-model="driver.userContact" required ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" name="userPhone">
+                    <span style="color:red" ng-show="driverForm.userContact.$dirty && driverForm.userContact.$invalid">
+                        <span ng-show="driverForm.userContact.$error.required">Mobile Number is required.</span>
+                        <span ng-show="driverForm.userContact.$error.pattern">Please enter a valid mobile number</span>
+                    </span></div>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+                    License<br>
+                    <i class="material-icons">file_upload</i>
+                    <input type="file" class="form-control element-space" file-model="driver.license"/>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6 col-lg-offset-3 left-inner-addon"></br>
-                    <button type="submit" class="btn btn-primary form-control" id="btnSubmit" name="btnSubmit">Submit</button>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+                    ID Proof<br>
+                    <i class="material-icons">file_upload</i>
+                    <input type="file" class="form-control element-space" file-model="driver.idProof"/>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
+                    Photo<br>
+                    <i class="material-icons">file_upload</i>
+                    <input type="file" class="form-control element-space" file-model="driver.photo"/>
                 </div>
             </div>
+            <div class="form-group">
+
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 col-lg-offset-3 left-inner-addon"><br>
+                    <input type="submit" ng-disabled="driverForm.$invalid" class="btn btn-primary form-control" value="Submit">
+                </div>
+            </div>
+            
         </form> </formmodal>
+    <formmodal title="titleName" visible="imageHidden">
+        <img src="/ShuttleApp/service/routeMap/{{imageName}}" alt="image" class="img-responsive"/>
+    </formmodal>
+
+    <div style="overflow-x:auto;" class="table-responsive">
+
+        <table class="table table-condensed table-bordered table-hover">
+            <thead style="background-color: #2196F3;color: white">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Photo</th>
+                    <th>ID Proof</th>
+                    <th>License</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="person in myWelcome">
+                <tr ng-if="person.userName.length > 0 && person.userState.length > 0" ng-class="{even: $even, odd: $odd}">
+                    <td>{{person.userName}}</td>
+                    <td>{{person.userEmail}}</td>
+                    <td>{{person.userContact}}</td>
+                    <td>{{person.userAddress}}</td>
+                    <td>{{person.userCity}}</td>
+                    <td>{{person.userState}}</td>
+                    <td>{{person.userCountry}}</td>
+                    <td style="text-align: center" ng-click="toggleImage(shuttleRoute.routeMapImage)"><i class="material-icons">face</i></td>
+                    <td style="text-align: center" ng-click="toggleImage(shuttleRoute.routeMapImage)"><i class="material-icons">perm_identity</i></td>
+                    <td style="text-align: center" ng-click="toggleImage(shuttleRoute.routeMapImage)"><i class="material-icons">chrome_reader_mode</i></td>
+                    <td ng-click="hideDialog(person, true)" style="cursor: pointer;color: #2196F3;text-align: center"><i class="material-icons btn-icon">edit</i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>
-
-

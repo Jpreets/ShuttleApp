@@ -1,7 +1,8 @@
 <div style="width:100%" ng-init="getOwnerList()"> 
     <button ng-click="hideDialog({},false)" class="btn-xs btn-primary" style="margin-bottom: 30px"><i class="material-icons btn-icon">add_circle_outline</i>Owner</button>
     <formmodal title="titleName" visible="ownerHidden">
-        <form role="form" class="form-horizontal" id="ownerForm" name="ownerForm" ng-submit="insertOwner()">
+        <div style="display: block;color: red;text-align: center;">{{result}}</div>
+        <form role="form" class="form-horizontal" id="ownerForm" name="form.ownerForm" ng-submit="insertOwner()">
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
                     <br>
@@ -51,7 +52,7 @@
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"></br>
                     <i class="material-icons">local_phone</i>
-                    <input type="text" class="form-control element-space" placeholder="Contact" ng-model="owner.userContact" required ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" name="ownerPhone">
+                    <input type="text" class="form-control element-space" placeholder="Contact" ng-model="owner.userContact" required ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" name="ownerContact">
                     <span style="color:red" ng-show="ownerForm.userContact.$dirty && ownerForm.userContact.$invalid">
                         <span ng-show="ownerForm.userContact.$error.required">Mobile Number is required.</span>
                         <span ng-show="ownerForm.userContact.$error.pattern">Please enter a valid mobile number</span>
@@ -84,7 +85,7 @@
                 <tr ng-if="person.userName.length > 0 && person.userState.length > 0" ng-class="{even: $even, odd: $odd}">
                     <td>{{person.userName}}</td>
                     <td>{{person.userEmail}}</td>
-                    <td>{{person.userPhone}}</td>
+                    <td>{{person.userContact}}</td>
                     <td>{{person.userAddress}}</td>
                     <td>{{person.userCity}}</td>
                     <td>{{person.userState}}</td>

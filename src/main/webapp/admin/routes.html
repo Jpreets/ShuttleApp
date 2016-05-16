@@ -1,6 +1,6 @@
 <div style="width:100%" ng-init="getRouteList()"> 
     <button ng-click="hideDialog({}, false);" class="btn-xs btn-primary" style="margin-bottom: 30px"><i class="material-icons btn-icon">add_circle_outline</i>Route</button>
-    <formmodal title="titleName" visible="routeHidden">
+    <formmodal style="styleName" class="className" title="titleName" visible="routeHidden">
         <form role="form" class="form-horizontal" id="routeForm" name="form.routeForm" enctype="multipart/form-data" ng-submit="insertRoute()">
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon">
@@ -33,12 +33,12 @@
             <div class="form-group">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
                     <i class="material-icons">location_searching</i>
-                    <input type='text' class="form-control element-space" placeholder="Start Location" ng-model="route.routeStartLocation" required/>
+                    <input type='text' class="form-control element-space" placeholder="Start Location" id="startLocation" ng-model="route.routeStartLocation" required/>
                     <span style="color:red" ng-show="routeForm.routeStartLocation.$invalid && !routeForm.routeStartLocation.$pristine">Start Location is required.</span>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 left-inner-addon"><br>
                     <i class="material-icons">stop</i>
-                    <input type='text' class="form-control element-space" placeholder="End Location" ng-model="route.routeEndLocation" required />
+                    <input type='text' class="form-control element-space" placeholder="End Location" id="stopLocation" ng-model="route.routeEndLocation" required />
                     <span style="color:red" ng-show="routeForm.routeEndLocation.$invalid && !routeForm.routeEndLocation.$pristine">End Location is required.</span>
                 </div>
             </div>
@@ -69,7 +69,7 @@
             </div>
         </form>
     </formmodal>
-    <formmodal title="titleName" visible="imageHidden">
+    <formmodal style="styleName" class="className" title="titleName" visible="imageHidden">
         <img src="/ShuttleApp/service/routeMap/{{imageName}}" alt="image" class="img-responsive"/>
     </formmodal>
     <div style="overflow-x:auto;" class="table-responsive">

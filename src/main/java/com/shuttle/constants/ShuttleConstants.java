@@ -13,6 +13,8 @@ public interface ShuttleConstants {
     public static final String ADMIN_ADD_OWNER = "/addOwner";
     public static final String ADMIN_ADD_VEHICLE = "/addVehicle";
     public static final String ADMIN_ADD_ROUTE = "/addRoute";
+    public static final String ADMIN_ADD_DRIVER = "/addDriver";
+    public static final String ADMIN_GET_DRIVERS = "/admin/getDriverList";
     public static final String ADMIN_GET_OWNERS = "/admin/getOwnerList";
     public static final String ADMIN_GET_VEHICLES = "/admin/getVehicleList";
     public static final String ADMIN_GET_ROUTES = "/admin/getRouteList";
@@ -21,6 +23,7 @@ public interface ShuttleConstants {
     public static final String DOMAIN="http://localhost:8080/ShuttleApp/";
     public static final String SUCCESS="success";
     public static final String FAILURE="failure";
+    public static final String EMAIL_EXISTS="Email exists";
     /*MAIL CONSTANTS*/
     public static final String WELCOME_MAIL_BODY = "<center><h2>Mindfire Shuttle</h2></center><br><br><h4>Hi  <<userName>>"
             + "<br><br>WELCOME ! We are excited to have you on board with us.</h4><br><h5>"
@@ -49,4 +52,10 @@ public interface ShuttleConstants {
     
     /*FOLDER CONSTANTS*/
     public static final String DIRECTORY_ROUTE_MAP="/home/baldeep/Pictures/Route Map/";
+    public static final String DIRECTORY_DRIVER_PHOTO="/home/baldeep/Pictures/Driver/Photo/";
+    public static final String DIRECTORY_DRIVER_LICENSE="/home/baldeep/Pictures/Driver/License/";
+    public static final String DIRECTORY_DRIVER_IDPROOF="/home/baldeep/Pictures/Driver/IDProof/";
+    
+    /*Produces Constant*/
+    public static final String PRODUCES_JSON="application/json";
 }

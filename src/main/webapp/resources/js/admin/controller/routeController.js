@@ -62,6 +62,7 @@ adminApp.controller('routeController', ['$scope', '$http', 'fileUpload', functio
             var resp = fileUpload.uploadFileToUrl(fd, uploadUrl);
             resp.then(function (result) {
                 $scope.route = {};
+                angular.element("input[type='file']").val(null);
                 $scope.form.routeForm.$setPristine();
                 $scope.hideDialog();
                 $scope.getRouteList();

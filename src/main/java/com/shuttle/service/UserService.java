@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.shuttle.service;
 
 import com.shuttle.bean.UserBean;
@@ -10,9 +5,7 @@ import com.shuttle.constants.ShuttleConstants;
 import com.shuttle.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -27,7 +20,7 @@ public class UserService {
     @Autowired
     private Notification notification;
 
-    public boolean insertUser(UserBean user) {
+    public UserBean insertUser(UserBean user) { //Changing return type to UserBean instead of Boolean as Id is needed in Driver Addition
         
         user.setUserEmail(user.getUserEmail().toLowerCase());
         
@@ -43,12 +36,13 @@ public class UserService {
             } else {
                 user.setUserId(1);
             }
-            if (userRepository.save(user) != null) {
+            UserBean savedUser=userRepository.save(user);
+            if (savedUser != null) {
 
                 notification.sendWelcomeMail(user);//trigger welcome mail
-                return true;
+                return savedUser;
             }
         }
-        return false;
+        return null;
     }
 }

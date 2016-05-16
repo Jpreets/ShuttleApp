@@ -3,3 +3,6 @@ body{padding-top:50px}body>.navbar{-webkit-transition:background-color .3s ease-
 .left-inner-addon i {position: absolute;padding: 6px 5px;color: #2196F3}
 .btn-icon{vertical-align: middle;}
 .element-space{padding-left: 35px !important;font-size: small !important;}
+.pac-container {
+    z-index: 1051 !important;
+}
