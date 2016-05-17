@@ -1,11 +1,15 @@
 package com.shuttle.bean;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  *
  * @author baldeep
  */
+@Document(collection = "driver")
 public class DriverBean {
-    
+    @Id
     private int driverId;
     private String driverPhoto;
     private String driverLicense;

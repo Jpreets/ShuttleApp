@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.shuttle.constants.ShuttleConstants;
+import com.shuttle.repository.DriverRepository;
 import com.shuttle.repository.RouteRepository;
 import com.shuttle.repository.UserRepository;
 import com.shuttle.repository.VehicleRepository;
@@ -47,6 +48,8 @@ public class AdminController {
     private VehicleRepository vehicleRepository;
     @Autowired
     private RouteRepository routeRepository;
+    @Autowired
+    private DriverRepository driverRepository;
 
     @RequestMapping(value = ShuttleConstants.ADMIN_ADD_OWNER, method = RequestMethod.POST)
     @ResponseBody
@@ -153,6 +156,7 @@ public class AdminController {
                 driver.setDriverPhoto(photo);
 
                 driver.setDriverId(savedUser.getUserId());
+                driverRepository.save(driver);
                 return ShuttleConstants.SUCCESS;
             }
             return ShuttleConstants.EMAIL_EXISTS;
