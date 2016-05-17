@@ -4,9 +4,10 @@
  */
 package com.shuttle.conf;
 
-import com.shuttle.constants.ShuttleConstants;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -14,11 +15,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebMvc //<mvc:annotation-driven />
 @Configuration
 @ComponentScan({"com.shuttle"})
+@PropertySource("classpath:ShuttleConfig.properties")
 public class WebConfig extends WebMvcConfigurerAdapter {
+    @Value("${shuttle.directory_route_map}")
+    private String directoryRouteMap;
 
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/routeMap/**").addResourceLocations("file://"+ShuttleConstants.DIRECTORY_ROUTE_MAP);
+        registry.addResourceHandler("/routeMap/**").addResourceLocations("file://"+directoryRouteMap);
     }
 
 }

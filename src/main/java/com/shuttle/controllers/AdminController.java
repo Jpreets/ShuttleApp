@@ -31,12 +31,25 @@ import java.io.File;
 import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+@PropertySource("classpath:ShuttleConfig.properties")
+
 @Controller
 public class AdminController {
+
+    @Value("${shuttle.directory_driver_photo}")
+    private String directoryDriverPhoto;
+    @Value("${shuttle.directory_driver_license}")
+    private String directoryDriverLicense;
+    @Value("${shuttle.directory_driver_id_proof}")
+    private String directoryDriverIdProof;
+    @Value("${shuttle.directory_route_map}")
+    private String directoryRouteMap;
 
     @Autowired
     private UserRepository userRepository;
@@ -57,7 +70,7 @@ public class AdminController {
         UserBean result = null;
         try {
             UserBean s = new ObjectMapper().readValue(owner, UserBean.class);
-            s.setUserRole("ROLE_OWNER");
+            s.setUserRole(ShuttleConstants.ROLE_OWNER);
             result = userService.insertUser(s);
         } catch (Exception ex) {
             Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +81,7 @@ public class AdminController {
     @RequestMapping(value = ShuttleConstants.ADMIN_GET_OWNERS, method = RequestMethod.GET, produces = ShuttleConstants.PRODUCES_JSON)
     @ResponseBody
     public List<UserBean> getOwnerList() {
-        List<UserBean> users = userRepository.findByUserRole("ROLE_OWNER");
+        List<UserBean> users = userRepository.findByUserRole(ShuttleConstants.ROLE_OWNER);
         return users;
     }
 
@@ -115,7 +128,7 @@ public class AdminController {
             String fileName = GenerateFileName.createFileName(mFile.getOriginalFilename());
             route.setRouteMapImage(fileName);
             route.setRouteStopsBean(listStops);
-            mFile.transferTo(new File(ShuttleConstants.DIRECTORY_ROUTE_MAP + fileName));
+            mFile.transferTo(new File(directoryRouteMap + fileName));
             routeRepository.save(route);
             return ShuttleConstants.SUCCESS;
         } catch (IOException ex) {
@@ -137,22 +150,22 @@ public class AdminController {
             MultipartHttpServletRequest nRequest,
             @ModelAttribute("user") UserBean user, DriverBean driver) {
         try {
-            user.setUserRole("ROLE_DRIVER");
+            user.setUserRole(ShuttleConstants.ROLE_DRIVER);
             UserBean savedUser = userService.insertUser(user);
             if (savedUser != null) {
                 MultipartFile idProofM = nRequest.getFile("idProof");
                 String idProof = GenerateFileName.createFileName(idProofM.getOriginalFilename());
-                idProofM.transferTo(new File(ShuttleConstants.DIRECTORY_DRIVER_IDPROOF + idProof));
+                idProofM.transferTo(new File(directoryDriverIdProof + idProof));
                 driver.setDriverIdProof(idProof);
 
                 MultipartFile licenseM = nRequest.getFile("license");
                 String license = GenerateFileName.createFileName(licenseM.getOriginalFilename());
-                licenseM.transferTo(new File(ShuttleConstants.DIRECTORY_DRIVER_LICENSE + license));
+                licenseM.transferTo(new File(directoryDriverLicense + license));
                 driver.setDriverLicense(license);
 
                 MultipartFile photoM = nRequest.getFile("photo");
                 String photo = GenerateFileName.createFileName(photoM.getOriginalFilename());
-                photoM.transferTo(new File(ShuttleConstants.DIRECTORY_DRIVER_PHOTO + photo));
+                photoM.transferTo(new File(directoryDriverPhoto + photo));
                 driver.setDriverPhoto(photo);
 
                 driver.setDriverId(savedUser.getUserId());

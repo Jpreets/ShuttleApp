@@ -20,7 +20,6 @@ public interface ShuttleConstants {
     public static final String ADMIN_GET_ROUTES = "/admin/getRouteList";
 
     
-    public static final String DOMAIN="http://localhost:8080/ShuttleApp/";
     public static final String SUCCESS="success";
     public static final String FAILURE="failure";
     public static final String EMAIL_EXISTS="Email exists";
@@ -44,18 +43,18 @@ public interface ShuttleConstants {
     public static final String TAG_USER_EMAIL = "<<userEmail>>";
     public static final String TAG_DOMAIN="<<Domain>>";
 
-    /*EMAIL*/
-    public static final String SHUTTLE_EMAIL = "mindfireprojects@gmail.com";
+    
 
     /*HASHING CONSTANTS*/
     public static final String SALT = "$2a$12$nqfG9jIkLm8th3OpoxX8a.";
     
-    /*FOLDER CONSTANTS*/
-    public static final String DIRECTORY_ROUTE_MAP="/home/baldeep/Pictures/Route Map/";
-    public static final String DIRECTORY_DRIVER_PHOTO="/home/baldeep/Pictures/Driver/Photo/";
-    public static final String DIRECTORY_DRIVER_LICENSE="/home/baldeep/Pictures/Driver/License/";
-    public static final String DIRECTORY_DRIVER_IDPROOF="/home/baldeep/Pictures/Driver/IDProof/";
-    
     /*Produces Constant*/
     public static final String PRODUCES_JSON="application/json";
+    
+    /*Role Type Constants*/
+    
+    public static final String ROLE_ADMIN="ROLE_ADMIN";
+    public static final String ROLE_OWNER="ROLE_OWNER";
+    public static final String ROLE_DRIVER="ROLE_DRIVER";
+    public static final String ROLE_CUSTOMER="ROLE_CUSTOMER";
 }

@@ -4,6 +4,7 @@
  */
 package com.shuttle.bean;
 
+import com.shuttle.constants.ShuttleConstants;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.Digits;
@@ -26,7 +27,7 @@ public class UserBean {
     @Digits(integer = 10, fraction = 0, message = "Phone number cannot be more than 10 digits")
     private String userContact;
     private String userGender;
-    private String userRole = "ROLE_ADMIN";
+    private String userRole = ShuttleConstants.ROLE_CUSTOMER;
     private String userChangePassword = "Not Changed";
     private String userAddress;
     private String userCountry;
@@ -99,7 +100,7 @@ public class UserBean {
     public void setUserChangePassword(String userChangePassword) {
         this.userChangePassword = userChangePassword;
     }
-    
+
     public String getUserAddress() {
         return userAddress;
     }
