@@ -45,10 +45,11 @@ adminApp.controller('routeController', ['$scope', '$http', 'fileUpload', functio
             var file = $scope.route.myFile;
             var routeCity = $scope.route.routeCity;
             var routeCountry = $scope.route.routeCountry;
-            var routeEndLocation = angular.element('#stopLocation').val()//$scope.route.routeEndLocation;
+            var routeEndLocation = angular.element('#stopLocation').val();//$scope.route.routeEndLocation;
             var routeStartLocation = angular.element('#startLocation').val();//$scope.route.routeStartLocation;
             var routeState = $scope.route.routeState;
             var routeZone = $scope.route.routeZone;
+            var routeTotalPrice=$scope.route.routeTotalPrice;
             var routeStop = angular.toJson($scope.choices);
             fd.append('file', file);
             fd.append('routeCity', routeCity);
@@ -57,6 +58,7 @@ adminApp.controller('routeController', ['$scope', '$http', 'fileUpload', functio
             fd.append('routeStartLocation', routeStartLocation);
             fd.append('routeState', routeState);
             fd.append('routeZone', routeZone);
+            fd.append('routeTotalPrice', routeTotalPrice);
             fd.append('routeStop1', routeStop);
             alert();
             var uploadUrl = '/ShuttleApp/service/addRoute';

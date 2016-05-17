@@ -25,6 +25,7 @@ public class RouteBean {
     private String routeEndLocation;
     private String routeMapImage;
     private String routeTotalDistance;
+    private String routeTotalPrice;
     private List<RouteStopsBean> routeStopsBean;
 
     public String getRouteId() {
@@ -107,10 +108,19 @@ public class RouteBean {
         this.routeStopsBean = routeStopsBean;
     }
 
+    public String getRouteTotalPrice() {
+        return routeTotalPrice;
+    }
+
+    public void setRouteTotalPrice(String routeTotalPrice) {
+        this.routeTotalPrice = routeTotalPrice;
+    }
+
     @Override
     public String toString() {
-        return "RouteBean{" + "routeId=" + routeId + ", routeCity=" + routeCity + ", routeState=" + routeState + ", routeCountry=" + routeCountry + ", routeZone=" + routeZone + ", routeStartLocation=" + routeStartLocation + ", routeEndLocation=" + routeEndLocation + ", routeMapImage=" + routeMapImage + ", routeTotalDistance=" + routeTotalDistance + ", routeStopsBean=" + routeStopsBean + '}';
+        return "RouteBean{" + "routeId=" + routeId + ", routeCity=" + routeCity + ", routeState=" + routeState + ", routeCountry=" + routeCountry + ", routeZone=" + routeZone + ", routeStartLocation=" + routeStartLocation + ", routeEndLocation=" + routeEndLocation + ", routeMapImage=" + routeMapImage + ", routeTotalDistance=" + routeTotalDistance + ", routeTotalPrice=" + routeTotalPrice + ", routeStopsBean=" + routeStopsBean + '}';
     }
     
+
     
 }
