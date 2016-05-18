@@ -84,7 +84,7 @@
             
         </form> </formmodal>
     <formmodal title="titleName" visible="imageHidden">
-        <img src="/ShuttleApp/service/routeMap/{{imageName}}" alt="image" class="img-responsive"/>
+        <img src="/ShuttleApp/service/{{imageName}}" alt="image" class="img-responsive"/>
     </formmodal>
 
     <div style="overflow-x:auto;" class="table-responsive">
@@ -105,18 +105,18 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody ng-repeat="person in myWelcome">
-                <tr ng-if="person.userName.length > 0 && person.userState.length > 0" ng-class="{even: $even, odd: $odd}">
-                    <td>{{person.userName}}</td>
-                    <td>{{person.userEmail}}</td>
-                    <td>{{person.userContact}}</td>
-                    <td>{{person.userAddress}}</td>
-                    <td>{{person.userCity}}</td>
-                    <td>{{person.userState}}</td>
-                    <td>{{person.userCountry}}</td>
-                    <td style="text-align: center" ng-click="toggleImage(shuttleRoute.routeMapImage)"><i class="material-icons">face</i></td>
-                    <td style="text-align: center" ng-click="toggleImage(shuttleRoute.routeMapImage)"><i class="material-icons">perm_identity</i></td>
-                    <td style="text-align: center" ng-click="toggleImage(shuttleRoute.routeMapImage)"><i class="material-icons">chrome_reader_mode</i></td>
+            <tbody ng-repeat="person in driverList">
+                <tr ng-class="{even: $even, odd: $odd}">
+                    <td>{{person.userBean.userName}}</td>
+                    <td>{{person.userBean.userEmail}}</td>
+                    <td>{{person.userBean.userContact}}</td>
+                    <td>{{person.userBean.userAddress}}</td>
+                    <td>{{person.userBean.userCity}}</td>
+                    <td>{{person.userBean.userState}}</td>
+                    <td>{{person.userBean.userCountry}}</td>
+                    <td style="text-align: center" ng-click="toggleImage(person.driverPhoto,'Photo')"><i class="material-icons">face</i></td>
+                    <td style="text-align: center" ng-click="toggleImage(person.driverIdProof,'Id Proof')"><i class="material-icons">perm_identity</i></td>
+                    <td style="text-align: center" ng-click="toggleImage(person.driverLicense,'License')"><i class="material-icons">chrome_reader_mode</i></td>
                     <td ng-click="hideDialog(person, true)" style="cursor: pointer;color: #2196F3;text-align: center"><i class="material-icons btn-icon">edit</i></td>
                 </tr>
             </tbody>

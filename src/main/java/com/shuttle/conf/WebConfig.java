@@ -19,10 +19,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Value("${shuttle.directory_route_map}")
     private String directoryRouteMap;
+     @Value("${shuttle.directory_driver_photo}")
+    private String directoryDriverPhoto;
+    @Value("${shuttle.directory_driver_license}")
+    private String directoryDriverLicense;
+    @Value("${shuttle.directory_driver_id_proof}")
+    private String directoryDriverIdProof;
 
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/routeMap/**").addResourceLocations("file://"+directoryRouteMap);
+        registry.addResourceHandler("/driverLicense/**").addResourceLocations("file://"+directoryDriverLicense);
+        registry.addResourceHandler("/driverPhoto/**").addResourceLocations("file://"+directoryDriverPhoto);
+        registry.addResourceHandler("/driverIdProof/**").addResourceLocations("file://"+directoryDriverIdProof);
     }
 
 }

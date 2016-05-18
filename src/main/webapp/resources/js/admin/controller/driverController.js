@@ -11,10 +11,17 @@ adminApp.controller('driverController', ['$scope', '$http', 'fileUpload', functi
             $scope.titleName = isEdit ? "Edit Driver" : "Add Driver";
         };
 
-        $scope.toggleImage = function (image) {
-            $scope.imageName = image;
+        $scope.toggleImage = function (image, title) {
+            if (title === 'License') {
+                $scope.imageName = 'driverLicense/' + image;
+            } else if (title === 'Photo') {
+                $scope.imageName = 'driverPhoto/' + image;
+            } else {
+                $scope.imageName = 'driverIdProof/' + image;
+            }
+
             $scope.imageHidden = !$scope.imageHidden;
-            $scope.titleName = "Route Map";
+            $scope.titleName = title;
         };
 
         $scope.toggleResult = function (result) {
@@ -44,10 +51,10 @@ adminApp.controller('driverController', ['$scope', '$http', 'fileUpload', functi
             var userName = $scope.driver.userName;
             var userEmail = $scope.driver.userEmail;
             var userAddress = $scope.driver.userAddress;
-            var userPhone = $scope.driver.userPhone;
             var userCity = $scope.driver.userCity;
             var userCountry = $scope.driver.userCountry;
             var userState = $scope.driver.userState;
+            var userContact = $scope.driver.userContact;
 
             fd.append('license', license);
             fd.append('idProof', idProof);
@@ -55,7 +62,7 @@ adminApp.controller('driverController', ['$scope', '$http', 'fileUpload', functi
             fd.append('userName', userName);
             fd.append('userEmail', userEmail);
             fd.append('userAddress', userAddress);
-            fd.append('userPhone', userPhone);
+            fd.append('userContact', userContact);
             fd.append('userCity', userCity);
             fd.append('userCountry', userCountry);
             fd.append('userState', userState);
@@ -70,7 +77,7 @@ adminApp.controller('driverController', ['$scope', '$http', 'fileUpload', functi
                     $scope.hideDialog();
                     $scope.getDriverList();
                 } else {
-                    $scope.result=result.data;
+                    $scope.result = result.data;
                 }
 
             }), function myError(response) {

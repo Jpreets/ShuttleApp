@@ -59,8 +59,10 @@ public class AdminController {
 
     @Autowired
     private VehicleRepository vehicleRepository;
+    
     @Autowired
     private RouteRepository routeRepository;
+    
     @Autowired
     private DriverRepository driverRepository;
 
@@ -137,12 +139,12 @@ public class AdminController {
         return ShuttleConstants.FAILURE;
     }
 
-//    
-//    @RequestMapping(value = ShuttleConstants.ADMIN_GET_DRIVERS, method = RequestMethod.GET, produces = "application/json")
-//    @ResponseBody
-//    public List<Object> getDriverList() {
-//        //return routeRepository.findAll();
-//    }
+    
+    @RequestMapping(value = ShuttleConstants.ADMIN_GET_DRIVERS, method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public List<DriverBean> getDriverList() {
+       return driverRepository.findAll();
+    }
     @RequestMapping(value = ShuttleConstants.ADMIN_ADD_DRIVER, method = RequestMethod.POST)
     @ResponseBody
     public String insertDriver(HttpServletRequest request,
@@ -169,6 +171,7 @@ public class AdminController {
                 driver.setDriverPhoto(photo);
 
                 driver.setDriverId(savedUser.getUserId());
+                driver.setUserBean(user);
                 driverRepository.save(driver);
                 return ShuttleConstants.SUCCESS;
             }

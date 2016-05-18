@@ -1,6 +1,7 @@
 package com.shuttle.bean;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -14,6 +15,8 @@ public class DriverBean {
     private String driverPhoto;
     private String driverLicense;
     private String driverIdProof;
+    @DBRef
+    private UserBean userBean;
 
     public int getDriverId() {
         return driverId;
@@ -48,9 +51,18 @@ public class DriverBean {
         this.driverIdProof = driverIdProof;
     }
 
+    
     @Override
     public String toString() {
         return "DriverBean{" + "driverId=" + driverId + ", driverPhoto=" + driverPhoto + ", driverLicense=" + driverLicense + ", driverIdProof=" + driverIdProof + '}';
+    }
+
+    public UserBean getUserBean() {
+        return userBean;
+    }
+
+    public void setUserBean(UserBean userBean) {
+        this.userBean = userBean;
     }
     
     
