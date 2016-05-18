@@ -59,10 +59,10 @@ public class AdminController {
 
     @Autowired
     private VehicleRepository vehicleRepository;
-    
+
     @Autowired
     private RouteRepository routeRepository;
-    
+
     @Autowired
     private DriverRepository driverRepository;
 
@@ -91,9 +91,8 @@ public class AdminController {
     @ResponseBody
     public String insertVehicle(@RequestBody final String vehicle) {
         try {
-            System.out.println(vehicle);
             VehicleBean s = new ObjectMapper().readValue(vehicle, VehicleBean.class);
-
+            s.setUserBean(new UserBean(Integer.parseInt(s.getVehicleOwnerId())));
             if (vehicle != null) {
                 vehicleRepository.save(s);
                 return ShuttleConstants.SUCCESS;
@@ -139,12 +138,12 @@ public class AdminController {
         return ShuttleConstants.FAILURE;
     }
 
-    
     @RequestMapping(value = ShuttleConstants.ADMIN_GET_DRIVERS, method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public List<DriverBean> getDriverList() {
-       return driverRepository.findAll();
+        return driverRepository.findAll();
     }
+
     @RequestMapping(value = ShuttleConstants.ADMIN_ADD_DRIVER, method = RequestMethod.POST)
     @ResponseBody
     public String insertDriver(HttpServletRequest request,

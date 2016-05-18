@@ -60,7 +60,6 @@ adminApp.controller('routeController', ['$scope', '$http', 'fileUpload', functio
             fd.append('routeZone', routeZone);
             fd.append('routeTotalPrice', routeTotalPrice);
             fd.append('routeStop1', routeStop);
-            alert();
             var uploadUrl = '/ShuttleApp/service/addRoute';
             var resp = fileUpload.uploadFileToUrl(fd, uploadUrl);
             resp.then(function (result) {

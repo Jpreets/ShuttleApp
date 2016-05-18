@@ -5,7 +5,7 @@ adminApp.controller('driverController', ['$scope', '$http', 'fileUpload', functi
         $scope.driverHidden = false;
         $scope.titleName = "Add Driver";
         $scope.hideDialog = function (driver, isEdit) {
-
+            
             $scope.driverHidden = !$scope.driverHidden;
             $scope.driver = angular.copy(driver);
             $scope.titleName = isEdit ? "Edit Driver" : "Add Driver";

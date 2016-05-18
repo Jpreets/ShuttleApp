@@ -7,6 +7,8 @@ package com.shuttle.bean;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "vehicle")
@@ -26,7 +28,10 @@ public class VehicleBean {
     private Date vehicleInsuranceExpiry;
     private String vehicleCreatedTime;
     private String vehicleLastUpdateTime;
+    @Transient
     private String vehicleOwnerId;
+    @DBRef
+    private UserBean userBean;
 
     public String getVehicleId() {
         return vehicleId;
@@ -35,7 +40,6 @@ public class VehicleBean {
     public void setVehicleId(String vehicleId) {
         this.vehicleId = vehicleId;
     }
-    
 
     public String getVehicleName() {
         return vehicleName;
@@ -59,14 +63,6 @@ public class VehicleBean {
 
     public void setVehicleRegNo(String vehicleRegNo) {
         this.vehicleRegNo = vehicleRegNo;
-    }
-
-    public String getVehicleOwnerId() {
-        return vehicleOwnerId;
-    }
-
-    public void setVehicleOwnerId(String vehicleOwnerId) {
-        this.vehicleOwnerId = vehicleOwnerId;
     }
 
     public Date getVehiclePermitEndTime() {
@@ -125,10 +121,25 @@ public class VehicleBean {
         this.vehicleSeats = vehicleSeats;
     }
 
+    public UserBean getUserBean() {
+        return userBean;
+    }
+
+    public void setUserBean(UserBean userBean) {
+        this.userBean = userBean;
+    }
+
+    public String getVehicleOwnerId() {
+        return vehicleOwnerId;
+    }
+
+    public void setVehicleOwnerId(String vehicleOwnerId) {
+        this.vehicleOwnerId = vehicleOwnerId;
+    }
+
     @Override
     public String toString() {
-        return "VehicleBean{" + "vehicleId=" + vehicleId + ", vehicleName=" + vehicleName + ", vehicleType=" + vehicleType + ", vehicleFuelType=" + vehicleFuelType + ", vehicleRegNo=" + vehicleRegNo + ", vehicleColor=" + vehicleColor + ", vehicleSeats=" + vehicleSeats + ", vehiclePermitEndTime=" + vehiclePermitEndTime + ", vehicleInsuranceExpiry=" + vehicleInsuranceExpiry + ", vehicleCreatedTime=" + vehicleCreatedTime + ", vehicleLastUpdateTime=" + vehicleLastUpdateTime + ", vehicleOwnerId=" + vehicleOwnerId + '}';
+        return "VehicleBean{" + "vehicleId=" + vehicleId + ", vehicleName=" + vehicleName + ", vehicleType=" + vehicleType + ", vehicleFuelType=" + vehicleFuelType + ", vehicleRegNo=" + vehicleRegNo + ", vehicleColor=" + vehicleColor + ", vehicleSeats=" + vehicleSeats + ", vehiclePermitEndTime=" + vehiclePermitEndTime + ", vehicleInsuranceExpiry=" + vehicleInsuranceExpiry + ", vehicleCreatedTime=" + vehicleCreatedTime + ", vehicleLastUpdateTime=" + vehicleLastUpdateTime + ", vehicleOwnerId=" + vehicleOwnerId + ", userBean=" + userBean + '}';
     }
-    
-    
+
 }

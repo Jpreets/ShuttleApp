@@ -37,6 +37,10 @@ public class UserBean {
     public UserBean() {
     }
 
+    public UserBean(int userId) {
+        this.userId = userId;
+    }
+
     public String getUserName() {
         return userName;
     }

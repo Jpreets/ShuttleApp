@@ -101,7 +101,7 @@
                     <th>Permit End</th>
                     <th>Insurance Renewal</th>
                     <th>Fuel Type</th>
-                    <th>Owner Id</th>
+                    <th>Owner Name</th>
                     <th></th>
                 </tr>
             </thead>
@@ -113,7 +113,7 @@
                     <td>{{shuttleVehicle.vehiclePermitEndTime}}</td>
                     <td>{{shuttleVehicle.vehicleInsuranceExpiry}}</td>
                     <td>{{shuttleVehicle.vehicleFuelType}}</td>
-                    <td>{{shuttleVehicle.vehicleOwnerId}}</td>
+                    <td>{{shuttleVehicle.userBean.userName}}</td>
                     <td ng-click="hideDialog(shuttleVehicle, true);getOwnerList();" style="cursor: pointer;color: #2196F3;text-align: center"><i class="material-icons btn-icon">edit</i></td>
                 </tr>
             </tbody>
