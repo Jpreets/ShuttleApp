@@ -23,6 +23,7 @@
         <script src="/ShuttleApp/resources/js/directives/FileModel.js" type="text/javascript"></script>
         <script src="/ShuttleApp/resources/js/admin/service/FileUpload.js" type="text/javascript"></script>
         <script src="/ShuttleApp/resources/js/admin/controller/driverController.js"></script>
+        <script src="/ShuttleApp/resources/js/admin/controller/customerController.js"></script>
         <script src="/ShuttleApp/resources/js/admin/controller/ownerController.js"></script>
         <script src="/ShuttleApp/resources/js/admin/controller/driverController.js"></script>
         <script src="/ShuttleApp/resources/js/admin/controller/dashboardController.js"></script>
@@ -268,6 +269,10 @@
                         </li>
                         <li ng-click="select('drivers')">
                             <a href="#drivers" ng-class="{'active-menu':'drivers'==selected}"><i class="fa fa-qrcode"></i>Drivers</a>
+                        </li>
+                        
+                        <li ng-click="select('customers')">
+                            <a href="#customers" ng-class="{'active-menu':'customers'==selected}"><i class="fa fa-qrcode"></i>Customers</a>
                         </li>
 
                         <li ng-click="select('routes')">

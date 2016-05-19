@@ -16,6 +16,7 @@ public interface ShuttleConstants {
     public static final String ADMIN_ADD_DRIVER = "/addDriver";
     public static final String ADMIN_GET_DRIVERS = "/admin/getDriverList";
     public static final String ADMIN_GET_OWNERS = "/admin/getOwnerList";
+    public static final String ADMIN_GET_CUSTOMERS = "/admin/getCustomerList";
     public static final String ADMIN_GET_VEHICLES = "/admin/getVehicleList";
     public static final String ADMIN_GET_ROUTES = "/admin/getRouteList";
 

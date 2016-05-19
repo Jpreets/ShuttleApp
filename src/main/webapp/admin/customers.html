@@ -1,0 +1,25 @@
+<div style="width:100%" ng-init="getCustomerList()"> 
+    <div style="overflow-x:auto;" class="table-responsive">
+
+        <table class="table table-condensed table-bordered table-hover">
+            <thead style="background-color: #2196F3;color: white">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="person in customerList">
+                <tr  ng-class="{even: $even, odd: $odd}">
+                    <td>{{person.userName}}</td>
+                    <td>{{person.userEmail}}</td>
+                    <td>{{person.userContact}}</td>
+                    <td>{{person.userGender}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

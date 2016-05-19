@@ -24,6 +24,10 @@ adminApp.config(function ($routeProvider) {
                 templateUrl: 'drivers.html',
                 controller: 'driverController'
             })
+            .when('/customers', {
+                templateUrl: 'customers.html',
+                controller: 'customerController'
+            })
             .otherwise({
                 redirectTo: '/ShuttleApp/admin/dashboard.html'
             });

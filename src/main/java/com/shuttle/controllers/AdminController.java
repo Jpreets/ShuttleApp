@@ -86,6 +86,14 @@ public class AdminController {
         List<UserBean> users = userRepository.findByUserRole(ShuttleConstants.ROLE_OWNER);
         return users;
     }
+    
+     @RequestMapping(value = ShuttleConstants.ADMIN_GET_CUSTOMERS, method = RequestMethod.GET, produces = ShuttleConstants.PRODUCES_JSON)
+    @ResponseBody
+    public List<UserBean> getCustomerList() {
+        List<UserBean> users = userRepository.findByUserRole(ShuttleConstants.ROLE_CUSTOMER);
+        return users;
+    }
+
 
     @RequestMapping(value = ShuttleConstants.ADMIN_ADD_VEHICLE, method = RequestMethod.POST)
     @ResponseBody
