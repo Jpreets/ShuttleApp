@@ -4,11 +4,13 @@ adminApp.controller('driverController', ['$scope', '$http', 'fileUpload', functi
         $scope.form = {};
         $scope.driverHidden = false;
         $scope.titleName = "Add Driver";
+        $scope.driver.userId=0;
         $scope.hideDialog = function (driver, isEdit) {
             
             $scope.driverHidden = !$scope.driverHidden;
             $scope.driver = angular.copy(driver);
             $scope.titleName = isEdit ? "Edit Driver" : "Add Driver";
+            $scope.driver.userId=isEdit? $scope.driver.userId:0;
         };
 
         $scope.toggleImage = function (image, title) {
@@ -55,6 +57,7 @@ adminApp.controller('driverController', ['$scope', '$http', 'fileUpload', functi
             var userCountry = $scope.driver.userCountry;
             var userState = $scope.driver.userState;
             var userContact = $scope.driver.userContact;
+            var userId=$scope.driver.userId;
 
             fd.append('license', license);
             fd.append('idProof', idProof);
@@ -66,6 +69,7 @@ adminApp.controller('driverController', ['$scope', '$http', 'fileUpload', functi
             fd.append('userCity', userCity);
             fd.append('userCountry', userCountry);
             fd.append('userState', userState);
+            fd.append('userId', userId);
 
             var uploadUrl = '/ShuttleApp/service/addDriver';
             var resp = fileUpload.uploadFileToUrl(fd, uploadUrl);

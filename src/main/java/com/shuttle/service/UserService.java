@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author AmitPandey
+ * @author Baldeep Singh
  */
 @Service
 public class UserService {
@@ -42,6 +42,10 @@ public class UserService {
                 notification.sendWelcomeMail(user);//trigger welcome mail
                 return savedUser;
             }
+        }
+        else if(user.getUserId()!=0)
+        {
+            return userRepository.save(user);
         }
         return null;
     }

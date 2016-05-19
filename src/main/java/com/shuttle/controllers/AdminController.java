@@ -86,14 +86,13 @@ public class AdminController {
         List<UserBean> users = userRepository.findByUserRole(ShuttleConstants.ROLE_OWNER);
         return users;
     }
-    
-     @RequestMapping(value = ShuttleConstants.ADMIN_GET_CUSTOMERS, method = RequestMethod.GET, produces = ShuttleConstants.PRODUCES_JSON)
+
+    @RequestMapping(value = ShuttleConstants.ADMIN_GET_CUSTOMERS, method = RequestMethod.GET, produces = ShuttleConstants.PRODUCES_JSON)
     @ResponseBody
     public List<UserBean> getCustomerList() {
         List<UserBean> users = userRepository.findByUserRole(ShuttleConstants.ROLE_CUSTOMER);
         return users;
     }
-
 
     @RequestMapping(value = ShuttleConstants.ADMIN_ADD_VEHICLE, method = RequestMethod.POST)
     @ResponseBody
@@ -163,19 +162,24 @@ public class AdminController {
             UserBean savedUser = userService.insertUser(user);
             if (savedUser != null) {
                 MultipartFile idProofM = nRequest.getFile("idProof");
-                String idProof = GenerateFileName.createFileName(idProofM.getOriginalFilename());
-                idProofM.transferTo(new File(directoryDriverIdProof + idProof));
-                driver.setDriverIdProof(idProof);
-
+                if (idProofM != null) {
+                    String idProof = GenerateFileName.createFileName(idProofM.getOriginalFilename());
+                    idProofM.transferTo(new File(directoryDriverIdProof + idProof));
+                    driver.setDriverIdProof(idProof);
+                }
                 MultipartFile licenseM = nRequest.getFile("license");
-                String license = GenerateFileName.createFileName(licenseM.getOriginalFilename());
-                licenseM.transferTo(new File(directoryDriverLicense + license));
-                driver.setDriverLicense(license);
+                if (licenseM != null) {
+                    String license = GenerateFileName.createFileName(licenseM.getOriginalFilename());
+                    licenseM.transferTo(new File(directoryDriverLicense + license));
+                    driver.setDriverLicense(license);
+                }
 
                 MultipartFile photoM = nRequest.getFile("photo");
-                String photo = GenerateFileName.createFileName(photoM.getOriginalFilename());
-                photoM.transferTo(new File(directoryDriverPhoto + photo));
-                driver.setDriverPhoto(photo);
+                if (photoM != null) {
+                    String photo = GenerateFileName.createFileName(photoM.getOriginalFilename());
+                    photoM.transferTo(new File(directoryDriverPhoto + photo));
+                    driver.setDriverPhoto(photo);
+                }
 
                 driver.setDriverId(savedUser.getUserId());
                 driver.setUserBean(user);
